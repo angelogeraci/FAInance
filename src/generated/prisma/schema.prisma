@@ -1,0 +1,112 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Company {
+  id           String        @id @default(cuid())
+  name         String        @unique
+  users        User[]
+  categories   Category[]
+  transactions Transaction[]
+  costs        Cost[]
+  revenues     Revenue[]
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  role      UserRole @default(USER)
+  company   Company? @relation(fields: [companyId], references: [id])
+  companyId String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Category {
+  id            String        @id @default(cuid())
+  name          String
+  color         String
+  parent        Category?     @relation("CategoryToSub", fields: [parentId], references: [id])
+  parentId      String?
+  subcategories Category[]    @relation("CategoryToSub")
+  company       Company       @relation(fields: [companyId], references: [id])
+  companyId     String
+  transactions  Transaction[]
+  costs         Cost[]
+  revenues      Revenue[]
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+}
+
+model Transaction {
+  id         String    @id @default(cuid())
+  label      String
+  amount     Float
+  date       DateTime
+  category   Category? @relation(fields: [categoryId], references: [id])
+  categoryId String?
+  company    Company   @relation(fields: [companyId], references: [id])
+  companyId  String
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+}
+
+model Cost {
+  id          String     @id @default(cuid())
+  label       String
+  amount      Float
+  isRecurring Boolean
+  startDate   DateTime?
+  endDate     DateTime?
+  frequency   Frequency?
+  category    Category?  @relation(fields: [categoryId], references: [id])
+  categoryId  String?
+  company     Company    @relation(fields: [companyId], references: [id])
+  companyId   String
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+}
+
+enum Frequency {
+  MONTHLY
+  ANNUALLY
+  WEEKLY
+  DAILY
+}
+
+model Revenue {
+  id          String     @id @default(cuid())
+  label       String
+  amount      Float
+  isRecurring Boolean
+  startDate   DateTime?
+  endDate     DateTime?
+  frequency   Frequency?
+  category    Category?  @relation(fields: [categoryId], references: [id])
+  categoryId  String?
+  company     Company    @relation(fields: [companyId], references: [id])
+  companyId   String
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+}
+
+enum UserRole {
+  SUPERADMIN
+  ADMIN
+  USER
+}
