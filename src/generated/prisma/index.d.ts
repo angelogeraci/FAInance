@@ -1356,19 +1356,19 @@ export namespace Prisma {
    */
 
   export type CompanyCountOutputType = {
-    users: number
     categories: number
-    transactions: number
     costs: number
     revenues: number
+    transactions: number
+    users: number
   }
 
   export type CompanyCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    users?: boolean | CompanyCountOutputTypeCountUsersArgs
     categories?: boolean | CompanyCountOutputTypeCountCategoriesArgs
-    transactions?: boolean | CompanyCountOutputTypeCountTransactionsArgs
     costs?: boolean | CompanyCountOutputTypeCountCostsArgs
     revenues?: boolean | CompanyCountOutputTypeCountRevenuesArgs
+    transactions?: boolean | CompanyCountOutputTypeCountTransactionsArgs
+    users?: boolean | CompanyCountOutputTypeCountUsersArgs
   }
 
   // Custom InputTypes
@@ -1385,22 +1385,8 @@ export namespace Prisma {
   /**
    * CompanyCountOutputType without action
    */
-  export type CompanyCountOutputTypeCountUsersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: UserWhereInput
-  }
-
-  /**
-   * CompanyCountOutputType without action
-   */
   export type CompanyCountOutputTypeCountCategoriesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: CategoryWhereInput
-  }
-
-  /**
-   * CompanyCountOutputType without action
-   */
-  export type CompanyCountOutputTypeCountTransactionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: TransactionWhereInput
   }
 
   /**
@@ -1417,6 +1403,20 @@ export namespace Prisma {
     where?: RevenueWhereInput
   }
 
+  /**
+   * CompanyCountOutputType without action
+   */
+  export type CompanyCountOutputTypeCountTransactionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TransactionWhereInput
+  }
+
+  /**
+   * CompanyCountOutputType without action
+   */
+  export type CompanyCountOutputTypeCountUsersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: UserWhereInput
+  }
+
 
   /**
    * Count Type CategoryCountOutputType
@@ -1424,16 +1424,16 @@ export namespace Prisma {
 
   export type CategoryCountOutputType = {
     subcategories: number
-    transactions: number
     costs: number
     revenues: number
+    transactions: number
   }
 
   export type CategoryCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     subcategories?: boolean | CategoryCountOutputTypeCountSubcategoriesArgs
-    transactions?: boolean | CategoryCountOutputTypeCountTransactionsArgs
     costs?: boolean | CategoryCountOutputTypeCountCostsArgs
     revenues?: boolean | CategoryCountOutputTypeCountRevenuesArgs
+    transactions?: boolean | CategoryCountOutputTypeCountTransactionsArgs
   }
 
   // Custom InputTypes
@@ -1457,13 +1457,6 @@ export namespace Prisma {
   /**
    * CategoryCountOutputType without action
    */
-  export type CategoryCountOutputTypeCountTransactionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: TransactionWhereInput
-  }
-
-  /**
-   * CategoryCountOutputType without action
-   */
   export type CategoryCountOutputTypeCountCostsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: CostWhereInput
   }
@@ -1473,6 +1466,13 @@ export namespace Prisma {
    */
   export type CategoryCountOutputTypeCountRevenuesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: RevenueWhereInput
+  }
+
+  /**
+   * CategoryCountOutputType without action
+   */
+  export type CategoryCountOutputTypeCountTransactionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TransactionWhereInput
   }
 
 
@@ -1636,11 +1636,11 @@ export namespace Prisma {
     name?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    users?: boolean | Company$usersArgs<ExtArgs>
     categories?: boolean | Company$categoriesArgs<ExtArgs>
-    transactions?: boolean | Company$transactionsArgs<ExtArgs>
     costs?: boolean | Company$costsArgs<ExtArgs>
     revenues?: boolean | Company$revenuesArgs<ExtArgs>
+    transactions?: boolean | Company$transactionsArgs<ExtArgs>
+    users?: boolean | Company$usersArgs<ExtArgs>
     _count?: boolean | CompanyCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["company"]>
 
@@ -1667,11 +1667,11 @@ export namespace Prisma {
 
   export type CompanyOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "createdAt" | "updatedAt", ExtArgs["result"]["company"]>
   export type CompanyInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    users?: boolean | Company$usersArgs<ExtArgs>
     categories?: boolean | Company$categoriesArgs<ExtArgs>
-    transactions?: boolean | Company$transactionsArgs<ExtArgs>
     costs?: boolean | Company$costsArgs<ExtArgs>
     revenues?: boolean | Company$revenuesArgs<ExtArgs>
+    transactions?: boolean | Company$transactionsArgs<ExtArgs>
+    users?: boolean | Company$usersArgs<ExtArgs>
     _count?: boolean | CompanyCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type CompanyIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -1680,11 +1680,11 @@ export namespace Prisma {
   export type $CompanyPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Company"
     objects: {
-      users: Prisma.$UserPayload<ExtArgs>[]
       categories: Prisma.$CategoryPayload<ExtArgs>[]
-      transactions: Prisma.$TransactionPayload<ExtArgs>[]
       costs: Prisma.$CostPayload<ExtArgs>[]
       revenues: Prisma.$RevenuePayload<ExtArgs>[]
+      transactions: Prisma.$TransactionPayload<ExtArgs>[]
+      users: Prisma.$UserPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -2085,11 +2085,11 @@ export namespace Prisma {
    */
   export interface Prisma__CompanyClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    users<T extends Company$usersArgs<ExtArgs> = {}>(args?: Subset<T, Company$usersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     categories<T extends Company$categoriesArgs<ExtArgs> = {}>(args?: Subset<T, Company$categoriesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    transactions<T extends Company$transactionsArgs<ExtArgs> = {}>(args?: Subset<T, Company$transactionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TransactionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     costs<T extends Company$costsArgs<ExtArgs> = {}>(args?: Subset<T, Company$costsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CostPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     revenues<T extends Company$revenuesArgs<ExtArgs> = {}>(args?: Subset<T, Company$revenuesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RevenuePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    transactions<T extends Company$transactionsArgs<ExtArgs> = {}>(args?: Subset<T, Company$transactionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TransactionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    users<T extends Company$usersArgs<ExtArgs> = {}>(args?: Subset<T, Company$usersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2511,30 +2511,6 @@ export namespace Prisma {
   }
 
   /**
-   * Company.users
-   */
-  export type Company$usersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the User
-     */
-    select?: UserSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the User
-     */
-    omit?: UserOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: UserInclude<ExtArgs> | null
-    where?: UserWhereInput
-    orderBy?: UserOrderByWithRelationInput | UserOrderByWithRelationInput[]
-    cursor?: UserWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: UserScalarFieldEnum | UserScalarFieldEnum[]
-  }
-
-  /**
    * Company.categories
    */
   export type Company$categoriesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2556,30 +2532,6 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: CategoryScalarFieldEnum | CategoryScalarFieldEnum[]
-  }
-
-  /**
-   * Company.transactions
-   */
-  export type Company$transactionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Transaction
-     */
-    select?: TransactionSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Transaction
-     */
-    omit?: TransactionOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: TransactionInclude<ExtArgs> | null
-    where?: TransactionWhereInput
-    orderBy?: TransactionOrderByWithRelationInput | TransactionOrderByWithRelationInput[]
-    cursor?: TransactionWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: TransactionScalarFieldEnum | TransactionScalarFieldEnum[]
   }
 
   /**
@@ -2631,6 +2583,54 @@ export namespace Prisma {
   }
 
   /**
+   * Company.transactions
+   */
+  export type Company$transactionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Transaction
+     */
+    select?: TransactionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Transaction
+     */
+    omit?: TransactionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TransactionInclude<ExtArgs> | null
+    where?: TransactionWhereInput
+    orderBy?: TransactionOrderByWithRelationInput | TransactionOrderByWithRelationInput[]
+    cursor?: TransactionWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: TransactionScalarFieldEnum | TransactionScalarFieldEnum[]
+  }
+
+  /**
+   * Company.users
+   */
+  export type Company$usersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User
+     */
+    select?: UserSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the User
+     */
+    omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    where?: UserWhereInput
+    orderBy?: UserOrderByWithRelationInput | UserOrderByWithRelationInput[]
+    cursor?: UserWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: UserScalarFieldEnum | UserScalarFieldEnum[]
+  }
+
+  /**
    * Company without action
    */
   export type CompanyDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2663,30 +2663,30 @@ export namespace Prisma {
     id: string | null
     email: string | null
     password: string | null
-    role: $Enums.UserRole | null
     companyId: string | null
     createdAt: Date | null
     updatedAt: Date | null
+    role: $Enums.UserRole | null
   }
 
   export type UserMaxAggregateOutputType = {
     id: string | null
     email: string | null
     password: string | null
-    role: $Enums.UserRole | null
     companyId: string | null
     createdAt: Date | null
     updatedAt: Date | null
+    role: $Enums.UserRole | null
   }
 
   export type UserCountAggregateOutputType = {
     id: number
     email: number
     password: number
-    role: number
     companyId: number
     createdAt: number
     updatedAt: number
+    role: number
     _all: number
   }
 
@@ -2695,30 +2695,30 @@ export namespace Prisma {
     id?: true
     email?: true
     password?: true
-    role?: true
     companyId?: true
     createdAt?: true
     updatedAt?: true
+    role?: true
   }
 
   export type UserMaxAggregateInputType = {
     id?: true
     email?: true
     password?: true
-    role?: true
     companyId?: true
     createdAt?: true
     updatedAt?: true
+    role?: true
   }
 
   export type UserCountAggregateInputType = {
     id?: true
     email?: true
     password?: true
-    role?: true
     companyId?: true
     createdAt?: true
     updatedAt?: true
+    role?: true
     _all?: true
   }
 
@@ -2798,10 +2798,10 @@ export namespace Prisma {
     id: string
     email: string
     password: string
-    role: $Enums.UserRole
     companyId: string | null
     createdAt: Date
     updatedAt: Date
+    role: $Enums.UserRole
     _count: UserCountAggregateOutputType | null
     _min: UserMinAggregateOutputType | null
     _max: UserMaxAggregateOutputType | null
@@ -2825,10 +2825,10 @@ export namespace Prisma {
     id?: boolean
     email?: boolean
     password?: boolean
-    role?: boolean
     companyId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    role?: boolean
     company?: boolean | User$companyArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -2836,10 +2836,10 @@ export namespace Prisma {
     id?: boolean
     email?: boolean
     password?: boolean
-    role?: boolean
     companyId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    role?: boolean
     company?: boolean | User$companyArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -2847,10 +2847,10 @@ export namespace Prisma {
     id?: boolean
     email?: boolean
     password?: boolean
-    role?: boolean
     companyId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    role?: boolean
     company?: boolean | User$companyArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -2858,13 +2858,13 @@ export namespace Prisma {
     id?: boolean
     email?: boolean
     password?: boolean
-    role?: boolean
     companyId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    role?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "password" | "role" | "companyId" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "password" | "companyId" | "createdAt" | "updatedAt" | "role", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     company?: boolean | User$companyArgs<ExtArgs>
   }
@@ -2884,10 +2884,10 @@ export namespace Prisma {
       id: string
       email: string
       password: string
-      role: $Enums.UserRole
       companyId: string | null
       createdAt: Date
       updatedAt: Date
+      role: $Enums.UserRole
     }, ExtArgs["result"]["user"]>
     composites: {}
   }
@@ -3315,10 +3315,10 @@ export namespace Prisma {
     readonly id: FieldRef<"User", 'String'>
     readonly email: FieldRef<"User", 'String'>
     readonly password: FieldRef<"User", 'String'>
-    readonly role: FieldRef<"User", 'UserRole'>
     readonly companyId: FieldRef<"User", 'String'>
     readonly createdAt: FieldRef<"User", 'DateTime'>
     readonly updatedAt: FieldRef<"User", 'DateTime'>
+    readonly role: FieldRef<"User", 'UserRole'>
   }
     
 
@@ -3932,12 +3932,12 @@ export namespace Prisma {
     companyId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    company?: boolean | CompanyDefaultArgs<ExtArgs>
     parent?: boolean | Category$parentArgs<ExtArgs>
     subcategories?: boolean | Category$subcategoriesArgs<ExtArgs>
-    company?: boolean | CompanyDefaultArgs<ExtArgs>
-    transactions?: boolean | Category$transactionsArgs<ExtArgs>
     costs?: boolean | Category$costsArgs<ExtArgs>
     revenues?: boolean | Category$revenuesArgs<ExtArgs>
+    transactions?: boolean | Category$transactionsArgs<ExtArgs>
     _count?: boolean | CategoryCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["category"]>
 
@@ -3949,8 +3949,8 @@ export namespace Prisma {
     companyId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    parent?: boolean | Category$parentArgs<ExtArgs>
     company?: boolean | CompanyDefaultArgs<ExtArgs>
+    parent?: boolean | Category$parentArgs<ExtArgs>
   }, ExtArgs["result"]["category"]>
 
   export type CategorySelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -3961,8 +3961,8 @@ export namespace Prisma {
     companyId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    parent?: boolean | Category$parentArgs<ExtArgs>
     company?: boolean | CompanyDefaultArgs<ExtArgs>
+    parent?: boolean | Category$parentArgs<ExtArgs>
   }, ExtArgs["result"]["category"]>
 
   export type CategorySelectScalar = {
@@ -3977,32 +3977,32 @@ export namespace Prisma {
 
   export type CategoryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "color" | "parentId" | "companyId" | "createdAt" | "updatedAt", ExtArgs["result"]["category"]>
   export type CategoryInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    company?: boolean | CompanyDefaultArgs<ExtArgs>
     parent?: boolean | Category$parentArgs<ExtArgs>
     subcategories?: boolean | Category$subcategoriesArgs<ExtArgs>
-    company?: boolean | CompanyDefaultArgs<ExtArgs>
-    transactions?: boolean | Category$transactionsArgs<ExtArgs>
     costs?: boolean | Category$costsArgs<ExtArgs>
     revenues?: boolean | Category$revenuesArgs<ExtArgs>
+    transactions?: boolean | Category$transactionsArgs<ExtArgs>
     _count?: boolean | CategoryCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type CategoryIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    parent?: boolean | Category$parentArgs<ExtArgs>
     company?: boolean | CompanyDefaultArgs<ExtArgs>
+    parent?: boolean | Category$parentArgs<ExtArgs>
   }
   export type CategoryIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    parent?: boolean | Category$parentArgs<ExtArgs>
     company?: boolean | CompanyDefaultArgs<ExtArgs>
+    parent?: boolean | Category$parentArgs<ExtArgs>
   }
 
   export type $CategoryPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Category"
     objects: {
+      company: Prisma.$CompanyPayload<ExtArgs>
       parent: Prisma.$CategoryPayload<ExtArgs> | null
       subcategories: Prisma.$CategoryPayload<ExtArgs>[]
-      company: Prisma.$CompanyPayload<ExtArgs>
-      transactions: Prisma.$TransactionPayload<ExtArgs>[]
       costs: Prisma.$CostPayload<ExtArgs>[]
       revenues: Prisma.$RevenuePayload<ExtArgs>[]
+      transactions: Prisma.$TransactionPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -4406,12 +4406,12 @@ export namespace Prisma {
    */
   export interface Prisma__CategoryClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    company<T extends CompanyDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CompanyDefaultArgs<ExtArgs>>): Prisma__CompanyClient<$Result.GetResult<Prisma.$CompanyPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     parent<T extends Category$parentArgs<ExtArgs> = {}>(args?: Subset<T, Category$parentArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     subcategories<T extends Category$subcategoriesArgs<ExtArgs> = {}>(args?: Subset<T, Category$subcategoriesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    company<T extends CompanyDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CompanyDefaultArgs<ExtArgs>>): Prisma__CompanyClient<$Result.GetResult<Prisma.$CompanyPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    transactions<T extends Category$transactionsArgs<ExtArgs> = {}>(args?: Subset<T, Category$transactionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TransactionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     costs<T extends Category$costsArgs<ExtArgs> = {}>(args?: Subset<T, Category$costsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CostPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     revenues<T extends Category$revenuesArgs<ExtArgs> = {}>(args?: Subset<T, Category$revenuesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RevenuePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    transactions<T extends Category$transactionsArgs<ExtArgs> = {}>(args?: Subset<T, Category$transactionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TransactionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4887,30 +4887,6 @@ export namespace Prisma {
   }
 
   /**
-   * Category.transactions
-   */
-  export type Category$transactionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Transaction
-     */
-    select?: TransactionSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Transaction
-     */
-    omit?: TransactionOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: TransactionInclude<ExtArgs> | null
-    where?: TransactionWhereInput
-    orderBy?: TransactionOrderByWithRelationInput | TransactionOrderByWithRelationInput[]
-    cursor?: TransactionWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: TransactionScalarFieldEnum | TransactionScalarFieldEnum[]
-  }
-
-  /**
    * Category.costs
    */
   export type Category$costsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -4959,6 +4935,30 @@ export namespace Prisma {
   }
 
   /**
+   * Category.transactions
+   */
+  export type Category$transactionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Transaction
+     */
+    select?: TransactionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Transaction
+     */
+    omit?: TransactionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TransactionInclude<ExtArgs> | null
+    where?: TransactionWhereInput
+    orderBy?: TransactionOrderByWithRelationInput | TransactionOrderByWithRelationInput[]
+    cursor?: TransactionWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: TransactionScalarFieldEnum | TransactionScalarFieldEnum[]
+  }
+
+  /**
    * Category without action
    */
   export type CategoryDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -5000,10 +5000,12 @@ export namespace Prisma {
   export type TransactionMinAggregateOutputType = {
     id: string | null
     label: string | null
+    description: string | null
     amount: number | null
     date: Date | null
     categoryId: string | null
     companyId: string | null
+    fournisseur: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -5011,10 +5013,12 @@ export namespace Prisma {
   export type TransactionMaxAggregateOutputType = {
     id: string | null
     label: string | null
+    description: string | null
     amount: number | null
     date: Date | null
     categoryId: string | null
     companyId: string | null
+    fournisseur: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -5022,10 +5026,12 @@ export namespace Prisma {
   export type TransactionCountAggregateOutputType = {
     id: number
     label: number
+    description: number
     amount: number
     date: number
     categoryId: number
     companyId: number
+    fournisseur: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -5043,10 +5049,12 @@ export namespace Prisma {
   export type TransactionMinAggregateInputType = {
     id?: true
     label?: true
+    description?: true
     amount?: true
     date?: true
     categoryId?: true
     companyId?: true
+    fournisseur?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -5054,10 +5062,12 @@ export namespace Prisma {
   export type TransactionMaxAggregateInputType = {
     id?: true
     label?: true
+    description?: true
     amount?: true
     date?: true
     categoryId?: true
     companyId?: true
+    fournisseur?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -5065,10 +5075,12 @@ export namespace Prisma {
   export type TransactionCountAggregateInputType = {
     id?: true
     label?: true
+    description?: true
     amount?: true
     date?: true
     categoryId?: true
     companyId?: true
+    fournisseur?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -5163,10 +5175,12 @@ export namespace Prisma {
   export type TransactionGroupByOutputType = {
     id: string
     label: string
+    description: string | null
     amount: number
     date: Date
     categoryId: string | null
     companyId: string
+    fournisseur: string | null
     createdAt: Date
     updatedAt: Date
     _count: TransactionCountAggregateOutputType | null
@@ -5193,10 +5207,12 @@ export namespace Prisma {
   export type TransactionSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     label?: boolean
+    description?: boolean
     amount?: boolean
     date?: boolean
     categoryId?: boolean
     companyId?: boolean
+    fournisseur?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     category?: boolean | Transaction$categoryArgs<ExtArgs>
@@ -5206,10 +5222,12 @@ export namespace Prisma {
   export type TransactionSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     label?: boolean
+    description?: boolean
     amount?: boolean
     date?: boolean
     categoryId?: boolean
     companyId?: boolean
+    fournisseur?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     category?: boolean | Transaction$categoryArgs<ExtArgs>
@@ -5219,10 +5237,12 @@ export namespace Prisma {
   export type TransactionSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     label?: boolean
+    description?: boolean
     amount?: boolean
     date?: boolean
     categoryId?: boolean
     companyId?: boolean
+    fournisseur?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     category?: boolean | Transaction$categoryArgs<ExtArgs>
@@ -5232,15 +5252,17 @@ export namespace Prisma {
   export type TransactionSelectScalar = {
     id?: boolean
     label?: boolean
+    description?: boolean
     amount?: boolean
     date?: boolean
     categoryId?: boolean
     companyId?: boolean
+    fournisseur?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type TransactionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "label" | "amount" | "date" | "categoryId" | "companyId" | "createdAt" | "updatedAt", ExtArgs["result"]["transaction"]>
+  export type TransactionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "label" | "description" | "amount" | "date" | "categoryId" | "companyId" | "fournisseur" | "createdAt" | "updatedAt", ExtArgs["result"]["transaction"]>
   export type TransactionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     category?: boolean | Transaction$categoryArgs<ExtArgs>
     company?: boolean | CompanyDefaultArgs<ExtArgs>
@@ -5263,10 +5285,12 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: string
       label: string
+      description: string | null
       amount: number
       date: Date
       categoryId: string | null
       companyId: string
+      fournisseur: string | null
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["transaction"]>
@@ -5696,10 +5720,12 @@ export namespace Prisma {
   interface TransactionFieldRefs {
     readonly id: FieldRef<"Transaction", 'String'>
     readonly label: FieldRef<"Transaction", 'String'>
+    readonly description: FieldRef<"Transaction", 'String'>
     readonly amount: FieldRef<"Transaction", 'Float'>
     readonly date: FieldRef<"Transaction", 'DateTime'>
     readonly categoryId: FieldRef<"Transaction", 'String'>
     readonly companyId: FieldRef<"Transaction", 'String'>
+    readonly fournisseur: FieldRef<"Transaction", 'String'>
     readonly createdAt: FieldRef<"Transaction", 'DateTime'>
     readonly updatedAt: FieldRef<"Transaction", 'DateTime'>
   }
@@ -8557,10 +8583,10 @@ export namespace Prisma {
     id: 'id',
     email: 'email',
     password: 'password',
-    role: 'role',
     companyId: 'companyId',
     createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
+    updatedAt: 'updatedAt',
+    role: 'role'
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -8582,10 +8608,12 @@ export namespace Prisma {
   export const TransactionScalarFieldEnum: {
     id: 'id',
     label: 'label',
+    description: 'description',
     amount: 'amount',
     date: 'date',
     categoryId: 'categoryId',
     companyId: 'companyId',
+    fournisseur: 'fournisseur',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -8758,11 +8786,11 @@ export namespace Prisma {
     name?: StringFilter<"Company"> | string
     createdAt?: DateTimeFilter<"Company"> | Date | string
     updatedAt?: DateTimeFilter<"Company"> | Date | string
-    users?: UserListRelationFilter
     categories?: CategoryListRelationFilter
-    transactions?: TransactionListRelationFilter
     costs?: CostListRelationFilter
     revenues?: RevenueListRelationFilter
+    transactions?: TransactionListRelationFilter
+    users?: UserListRelationFilter
   }
 
   export type CompanyOrderByWithRelationInput = {
@@ -8770,11 +8798,11 @@ export namespace Prisma {
     name?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    users?: UserOrderByRelationAggregateInput
     categories?: CategoryOrderByRelationAggregateInput
-    transactions?: TransactionOrderByRelationAggregateInput
     costs?: CostOrderByRelationAggregateInput
     revenues?: RevenueOrderByRelationAggregateInput
+    transactions?: TransactionOrderByRelationAggregateInput
+    users?: UserOrderByRelationAggregateInput
   }
 
   export type CompanyWhereUniqueInput = Prisma.AtLeast<{
@@ -8785,11 +8813,11 @@ export namespace Prisma {
     NOT?: CompanyWhereInput | CompanyWhereInput[]
     createdAt?: DateTimeFilter<"Company"> | Date | string
     updatedAt?: DateTimeFilter<"Company"> | Date | string
-    users?: UserListRelationFilter
     categories?: CategoryListRelationFilter
-    transactions?: TransactionListRelationFilter
     costs?: CostListRelationFilter
     revenues?: RevenueListRelationFilter
+    transactions?: TransactionListRelationFilter
+    users?: UserListRelationFilter
   }, "id" | "name">
 
   export type CompanyOrderByWithAggregationInput = {
@@ -8819,10 +8847,10 @@ export namespace Prisma {
     id?: StringFilter<"User"> | string
     email?: StringFilter<"User"> | string
     password?: StringFilter<"User"> | string
-    role?: EnumUserRoleFilter<"User"> | $Enums.UserRole
     companyId?: StringNullableFilter<"User"> | string | null
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
+    role?: EnumUserRoleFilter<"User"> | $Enums.UserRole
     company?: XOR<CompanyNullableScalarRelationFilter, CompanyWhereInput> | null
   }
 
@@ -8830,10 +8858,10 @@ export namespace Prisma {
     id?: SortOrder
     email?: SortOrder
     password?: SortOrder
-    role?: SortOrder
     companyId?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    role?: SortOrder
     company?: CompanyOrderByWithRelationInput
   }
 
@@ -8844,10 +8872,10 @@ export namespace Prisma {
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
     password?: StringFilter<"User"> | string
-    role?: EnumUserRoleFilter<"User"> | $Enums.UserRole
     companyId?: StringNullableFilter<"User"> | string | null
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
+    role?: EnumUserRoleFilter<"User"> | $Enums.UserRole
     company?: XOR<CompanyNullableScalarRelationFilter, CompanyWhereInput> | null
   }, "id" | "email">
 
@@ -8855,10 +8883,10 @@ export namespace Prisma {
     id?: SortOrder
     email?: SortOrder
     password?: SortOrder
-    role?: SortOrder
     companyId?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    role?: SortOrder
     _count?: UserCountOrderByAggregateInput
     _max?: UserMaxOrderByAggregateInput
     _min?: UserMinOrderByAggregateInput
@@ -8871,10 +8899,10 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"User"> | string
     email?: StringWithAggregatesFilter<"User"> | string
     password?: StringWithAggregatesFilter<"User"> | string
-    role?: EnumUserRoleWithAggregatesFilter<"User"> | $Enums.UserRole
     companyId?: StringNullableWithAggregatesFilter<"User"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
+    role?: EnumUserRoleWithAggregatesFilter<"User"> | $Enums.UserRole
   }
 
   export type CategoryWhereInput = {
@@ -8888,12 +8916,12 @@ export namespace Prisma {
     companyId?: StringFilter<"Category"> | string
     createdAt?: DateTimeFilter<"Category"> | Date | string
     updatedAt?: DateTimeFilter<"Category"> | Date | string
+    company?: XOR<CompanyScalarRelationFilter, CompanyWhereInput>
     parent?: XOR<CategoryNullableScalarRelationFilter, CategoryWhereInput> | null
     subcategories?: CategoryListRelationFilter
-    company?: XOR<CompanyScalarRelationFilter, CompanyWhereInput>
-    transactions?: TransactionListRelationFilter
     costs?: CostListRelationFilter
     revenues?: RevenueListRelationFilter
+    transactions?: TransactionListRelationFilter
   }
 
   export type CategoryOrderByWithRelationInput = {
@@ -8904,12 +8932,12 @@ export namespace Prisma {
     companyId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    company?: CompanyOrderByWithRelationInput
     parent?: CategoryOrderByWithRelationInput
     subcategories?: CategoryOrderByRelationAggregateInput
-    company?: CompanyOrderByWithRelationInput
-    transactions?: TransactionOrderByRelationAggregateInput
     costs?: CostOrderByRelationAggregateInput
     revenues?: RevenueOrderByRelationAggregateInput
+    transactions?: TransactionOrderByRelationAggregateInput
   }
 
   export type CategoryWhereUniqueInput = Prisma.AtLeast<{
@@ -8923,12 +8951,12 @@ export namespace Prisma {
     companyId?: StringFilter<"Category"> | string
     createdAt?: DateTimeFilter<"Category"> | Date | string
     updatedAt?: DateTimeFilter<"Category"> | Date | string
+    company?: XOR<CompanyScalarRelationFilter, CompanyWhereInput>
     parent?: XOR<CategoryNullableScalarRelationFilter, CategoryWhereInput> | null
     subcategories?: CategoryListRelationFilter
-    company?: XOR<CompanyScalarRelationFilter, CompanyWhereInput>
-    transactions?: TransactionListRelationFilter
     costs?: CostListRelationFilter
     revenues?: RevenueListRelationFilter
+    transactions?: TransactionListRelationFilter
   }, "id">
 
   export type CategoryOrderByWithAggregationInput = {
@@ -8963,10 +8991,12 @@ export namespace Prisma {
     NOT?: TransactionWhereInput | TransactionWhereInput[]
     id?: StringFilter<"Transaction"> | string
     label?: StringFilter<"Transaction"> | string
+    description?: StringNullableFilter<"Transaction"> | string | null
     amount?: FloatFilter<"Transaction"> | number
     date?: DateTimeFilter<"Transaction"> | Date | string
     categoryId?: StringNullableFilter<"Transaction"> | string | null
     companyId?: StringFilter<"Transaction"> | string
+    fournisseur?: StringNullableFilter<"Transaction"> | string | null
     createdAt?: DateTimeFilter<"Transaction"> | Date | string
     updatedAt?: DateTimeFilter<"Transaction"> | Date | string
     category?: XOR<CategoryNullableScalarRelationFilter, CategoryWhereInput> | null
@@ -8976,10 +9006,12 @@ export namespace Prisma {
   export type TransactionOrderByWithRelationInput = {
     id?: SortOrder
     label?: SortOrder
+    description?: SortOrderInput | SortOrder
     amount?: SortOrder
     date?: SortOrder
     categoryId?: SortOrderInput | SortOrder
     companyId?: SortOrder
+    fournisseur?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     category?: CategoryOrderByWithRelationInput
@@ -8992,10 +9024,12 @@ export namespace Prisma {
     OR?: TransactionWhereInput[]
     NOT?: TransactionWhereInput | TransactionWhereInput[]
     label?: StringFilter<"Transaction"> | string
+    description?: StringNullableFilter<"Transaction"> | string | null
     amount?: FloatFilter<"Transaction"> | number
     date?: DateTimeFilter<"Transaction"> | Date | string
     categoryId?: StringNullableFilter<"Transaction"> | string | null
     companyId?: StringFilter<"Transaction"> | string
+    fournisseur?: StringNullableFilter<"Transaction"> | string | null
     createdAt?: DateTimeFilter<"Transaction"> | Date | string
     updatedAt?: DateTimeFilter<"Transaction"> | Date | string
     category?: XOR<CategoryNullableScalarRelationFilter, CategoryWhereInput> | null
@@ -9005,10 +9039,12 @@ export namespace Prisma {
   export type TransactionOrderByWithAggregationInput = {
     id?: SortOrder
     label?: SortOrder
+    description?: SortOrderInput | SortOrder
     amount?: SortOrder
     date?: SortOrder
     categoryId?: SortOrderInput | SortOrder
     companyId?: SortOrder
+    fournisseur?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: TransactionCountOrderByAggregateInput
@@ -9024,10 +9060,12 @@ export namespace Prisma {
     NOT?: TransactionScalarWhereWithAggregatesInput | TransactionScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Transaction"> | string
     label?: StringWithAggregatesFilter<"Transaction"> | string
+    description?: StringNullableWithAggregatesFilter<"Transaction"> | string | null
     amount?: FloatWithAggregatesFilter<"Transaction"> | number
     date?: DateTimeWithAggregatesFilter<"Transaction"> | Date | string
     categoryId?: StringNullableWithAggregatesFilter<"Transaction"> | string | null
     companyId?: StringWithAggregatesFilter<"Transaction"> | string
+    fournisseur?: StringNullableWithAggregatesFilter<"Transaction"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Transaction"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Transaction"> | Date | string
   }
@@ -9217,11 +9255,11 @@ export namespace Prisma {
     name: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    users?: UserCreateNestedManyWithoutCompanyInput
     categories?: CategoryCreateNestedManyWithoutCompanyInput
-    transactions?: TransactionCreateNestedManyWithoutCompanyInput
     costs?: CostCreateNestedManyWithoutCompanyInput
     revenues?: RevenueCreateNestedManyWithoutCompanyInput
+    transactions?: TransactionCreateNestedManyWithoutCompanyInput
+    users?: UserCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyUncheckedCreateInput = {
@@ -9229,11 +9267,11 @@ export namespace Prisma {
     name: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    users?: UserUncheckedCreateNestedManyWithoutCompanyInput
     categories?: CategoryUncheckedCreateNestedManyWithoutCompanyInput
-    transactions?: TransactionUncheckedCreateNestedManyWithoutCompanyInput
     costs?: CostUncheckedCreateNestedManyWithoutCompanyInput
     revenues?: RevenueUncheckedCreateNestedManyWithoutCompanyInput
+    transactions?: TransactionUncheckedCreateNestedManyWithoutCompanyInput
+    users?: UserUncheckedCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyUpdateInput = {
@@ -9241,11 +9279,11 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    users?: UserUpdateManyWithoutCompanyNestedInput
     categories?: CategoryUpdateManyWithoutCompanyNestedInput
-    transactions?: TransactionUpdateManyWithoutCompanyNestedInput
     costs?: CostUpdateManyWithoutCompanyNestedInput
     revenues?: RevenueUpdateManyWithoutCompanyNestedInput
+    transactions?: TransactionUpdateManyWithoutCompanyNestedInput
+    users?: UserUpdateManyWithoutCompanyNestedInput
   }
 
   export type CompanyUncheckedUpdateInput = {
@@ -9253,11 +9291,11 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    users?: UserUncheckedUpdateManyWithoutCompanyNestedInput
     categories?: CategoryUncheckedUpdateManyWithoutCompanyNestedInput
-    transactions?: TransactionUncheckedUpdateManyWithoutCompanyNestedInput
     costs?: CostUncheckedUpdateManyWithoutCompanyNestedInput
     revenues?: RevenueUncheckedUpdateManyWithoutCompanyNestedInput
+    transactions?: TransactionUncheckedUpdateManyWithoutCompanyNestedInput
+    users?: UserUncheckedUpdateManyWithoutCompanyNestedInput
   }
 
   export type CompanyCreateManyInput = {
@@ -9285,9 +9323,9 @@ export namespace Prisma {
     id?: string
     email: string
     password: string
-    role?: $Enums.UserRole
     createdAt?: Date | string
     updatedAt?: Date | string
+    role?: $Enums.UserRole
     company?: CompanyCreateNestedOneWithoutUsersInput
   }
 
@@ -9295,19 +9333,19 @@ export namespace Prisma {
     id?: string
     email: string
     password: string
-    role?: $Enums.UserRole
     companyId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    role?: $Enums.UserRole
   }
 
   export type UserUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
-    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     company?: CompanyUpdateOneWithoutUsersNestedInput
   }
 
@@ -9315,39 +9353,39 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
-    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     companyId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
   }
 
   export type UserCreateManyInput = {
     id?: string
     email: string
     password: string
-    role?: $Enums.UserRole
     companyId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    role?: $Enums.UserRole
   }
 
   export type UserUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
-    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
   }
 
   export type UserUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
-    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     companyId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
   }
 
   export type CategoryCreateInput = {
@@ -9356,12 +9394,12 @@ export namespace Prisma {
     color: string
     createdAt?: Date | string
     updatedAt?: Date | string
+    company: CompanyCreateNestedOneWithoutCategoriesInput
     parent?: CategoryCreateNestedOneWithoutSubcategoriesInput
     subcategories?: CategoryCreateNestedManyWithoutParentInput
-    company: CompanyCreateNestedOneWithoutCategoriesInput
-    transactions?: TransactionCreateNestedManyWithoutCategoryInput
     costs?: CostCreateNestedManyWithoutCategoryInput
     revenues?: RevenueCreateNestedManyWithoutCategoryInput
+    transactions?: TransactionCreateNestedManyWithoutCategoryInput
   }
 
   export type CategoryUncheckedCreateInput = {
@@ -9373,9 +9411,9 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     subcategories?: CategoryUncheckedCreateNestedManyWithoutParentInput
-    transactions?: TransactionUncheckedCreateNestedManyWithoutCategoryInput
     costs?: CostUncheckedCreateNestedManyWithoutCategoryInput
     revenues?: RevenueUncheckedCreateNestedManyWithoutCategoryInput
+    transactions?: TransactionUncheckedCreateNestedManyWithoutCategoryInput
   }
 
   export type CategoryUpdateInput = {
@@ -9384,12 +9422,12 @@ export namespace Prisma {
     color?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    company?: CompanyUpdateOneRequiredWithoutCategoriesNestedInput
     parent?: CategoryUpdateOneWithoutSubcategoriesNestedInput
     subcategories?: CategoryUpdateManyWithoutParentNestedInput
-    company?: CompanyUpdateOneRequiredWithoutCategoriesNestedInput
-    transactions?: TransactionUpdateManyWithoutCategoryNestedInput
     costs?: CostUpdateManyWithoutCategoryNestedInput
     revenues?: RevenueUpdateManyWithoutCategoryNestedInput
+    transactions?: TransactionUpdateManyWithoutCategoryNestedInput
   }
 
   export type CategoryUncheckedUpdateInput = {
@@ -9401,9 +9439,9 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     subcategories?: CategoryUncheckedUpdateManyWithoutParentNestedInput
-    transactions?: TransactionUncheckedUpdateManyWithoutCategoryNestedInput
     costs?: CostUncheckedUpdateManyWithoutCategoryNestedInput
     revenues?: RevenueUncheckedUpdateManyWithoutCategoryNestedInput
+    transactions?: TransactionUncheckedUpdateManyWithoutCategoryNestedInput
   }
 
   export type CategoryCreateManyInput = {
@@ -9437,8 +9475,10 @@ export namespace Prisma {
   export type TransactionCreateInput = {
     id?: string
     label: string
+    description?: string | null
     amount: number
     date: Date | string
+    fournisseur?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     category?: CategoryCreateNestedOneWithoutTransactionsInput
@@ -9448,10 +9488,12 @@ export namespace Prisma {
   export type TransactionUncheckedCreateInput = {
     id?: string
     label: string
+    description?: string | null
     amount: number
     date: Date | string
     categoryId?: string | null
     companyId: string
+    fournisseur?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -9459,8 +9501,10 @@ export namespace Prisma {
   export type TransactionUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     label?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     amount?: FloatFieldUpdateOperationsInput | number
     date?: DateTimeFieldUpdateOperationsInput | Date | string
+    fournisseur?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     category?: CategoryUpdateOneWithoutTransactionsNestedInput
@@ -9470,10 +9514,12 @@ export namespace Prisma {
   export type TransactionUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     label?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     amount?: FloatFieldUpdateOperationsInput | number
     date?: DateTimeFieldUpdateOperationsInput | Date | string
     categoryId?: NullableStringFieldUpdateOperationsInput | string | null
     companyId?: StringFieldUpdateOperationsInput | string
+    fournisseur?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -9481,10 +9527,12 @@ export namespace Prisma {
   export type TransactionCreateManyInput = {
     id?: string
     label: string
+    description?: string | null
     amount: number
     date: Date | string
     categoryId?: string | null
     companyId: string
+    fournisseur?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -9492,8 +9540,10 @@ export namespace Prisma {
   export type TransactionUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     label?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     amount?: FloatFieldUpdateOperationsInput | number
     date?: DateTimeFieldUpdateOperationsInput | Date | string
+    fournisseur?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -9501,10 +9551,12 @@ export namespace Prisma {
   export type TransactionUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     label?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     amount?: FloatFieldUpdateOperationsInput | number
     date?: DateTimeFieldUpdateOperationsInput | Date | string
     categoryId?: NullableStringFieldUpdateOperationsInput | string | null
     companyId?: StringFieldUpdateOperationsInput | string
+    fournisseur?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -9727,22 +9779,10 @@ export namespace Prisma {
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
-  export type UserListRelationFilter = {
-    every?: UserWhereInput
-    some?: UserWhereInput
-    none?: UserWhereInput
-  }
-
   export type CategoryListRelationFilter = {
     every?: CategoryWhereInput
     some?: CategoryWhereInput
     none?: CategoryWhereInput
-  }
-
-  export type TransactionListRelationFilter = {
-    every?: TransactionWhereInput
-    some?: TransactionWhereInput
-    none?: TransactionWhereInput
   }
 
   export type CostListRelationFilter = {
@@ -9757,15 +9797,19 @@ export namespace Prisma {
     none?: RevenueWhereInput
   }
 
-  export type UserOrderByRelationAggregateInput = {
-    _count?: SortOrder
+  export type TransactionListRelationFilter = {
+    every?: TransactionWhereInput
+    some?: TransactionWhereInput
+    none?: TransactionWhereInput
+  }
+
+  export type UserListRelationFilter = {
+    every?: UserWhereInput
+    some?: UserWhereInput
+    none?: UserWhereInput
   }
 
   export type CategoryOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
-  export type TransactionOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -9774,6 +9818,14 @@ export namespace Prisma {
   }
 
   export type RevenueOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type TransactionOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type UserOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -9830,13 +9882,6 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
-  export type EnumUserRoleFilter<$PrismaModel = never> = {
-    equals?: $Enums.UserRole | EnumUserRoleFieldRefInput<$PrismaModel>
-    in?: $Enums.UserRole[] | ListEnumUserRoleFieldRefInput<$PrismaModel>
-    notIn?: $Enums.UserRole[] | ListEnumUserRoleFieldRefInput<$PrismaModel>
-    not?: NestedEnumUserRoleFilter<$PrismaModel> | $Enums.UserRole
-  }
-
   export type StringNullableFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -9850,6 +9895,13 @@ export namespace Prisma {
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     mode?: QueryMode
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
+  export type EnumUserRoleFilter<$PrismaModel = never> = {
+    equals?: $Enums.UserRole | EnumUserRoleFieldRefInput<$PrismaModel>
+    in?: $Enums.UserRole[] | ListEnumUserRoleFieldRefInput<$PrismaModel>
+    notIn?: $Enums.UserRole[] | ListEnumUserRoleFieldRefInput<$PrismaModel>
+    not?: NestedEnumUserRoleFilter<$PrismaModel> | $Enums.UserRole
   }
 
   export type CompanyNullableScalarRelationFilter = {
@@ -9866,40 +9918,30 @@ export namespace Prisma {
     id?: SortOrder
     email?: SortOrder
     password?: SortOrder
-    role?: SortOrder
     companyId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    role?: SortOrder
   }
 
   export type UserMaxOrderByAggregateInput = {
     id?: SortOrder
     email?: SortOrder
     password?: SortOrder
-    role?: SortOrder
     companyId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    role?: SortOrder
   }
 
   export type UserMinOrderByAggregateInput = {
     id?: SortOrder
     email?: SortOrder
     password?: SortOrder
-    role?: SortOrder
     companyId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-  }
-
-  export type EnumUserRoleWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.UserRole | EnumUserRoleFieldRefInput<$PrismaModel>
-    in?: $Enums.UserRole[] | ListEnumUserRoleFieldRefInput<$PrismaModel>
-    notIn?: $Enums.UserRole[] | ListEnumUserRoleFieldRefInput<$PrismaModel>
-    not?: NestedEnumUserRoleWithAggregatesFilter<$PrismaModel> | $Enums.UserRole
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumUserRoleFilter<$PrismaModel>
-    _max?: NestedEnumUserRoleFilter<$PrismaModel>
+    role?: SortOrder
   }
 
   export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -9920,14 +9962,24 @@ export namespace Prisma {
     _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
-  export type CategoryNullableScalarRelationFilter = {
-    is?: CategoryWhereInput | null
-    isNot?: CategoryWhereInput | null
+  export type EnumUserRoleWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.UserRole | EnumUserRoleFieldRefInput<$PrismaModel>
+    in?: $Enums.UserRole[] | ListEnumUserRoleFieldRefInput<$PrismaModel>
+    notIn?: $Enums.UserRole[] | ListEnumUserRoleFieldRefInput<$PrismaModel>
+    not?: NestedEnumUserRoleWithAggregatesFilter<$PrismaModel> | $Enums.UserRole
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumUserRoleFilter<$PrismaModel>
+    _max?: NestedEnumUserRoleFilter<$PrismaModel>
   }
 
   export type CompanyScalarRelationFilter = {
     is?: CompanyWhereInput
     isNot?: CompanyWhereInput
+  }
+
+  export type CategoryNullableScalarRelationFilter = {
+    is?: CategoryWhereInput | null
+    isNot?: CategoryWhereInput | null
   }
 
   export type CategoryCountOrderByAggregateInput = {
@@ -9974,10 +10026,12 @@ export namespace Prisma {
   export type TransactionCountOrderByAggregateInput = {
     id?: SortOrder
     label?: SortOrder
+    description?: SortOrder
     amount?: SortOrder
     date?: SortOrder
     categoryId?: SortOrder
     companyId?: SortOrder
+    fournisseur?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -9989,10 +10043,12 @@ export namespace Prisma {
   export type TransactionMaxOrderByAggregateInput = {
     id?: SortOrder
     label?: SortOrder
+    description?: SortOrder
     amount?: SortOrder
     date?: SortOrder
     categoryId?: SortOrder
     companyId?: SortOrder
+    fournisseur?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -10000,10 +10056,12 @@ export namespace Prisma {
   export type TransactionMinOrderByAggregateInput = {
     id?: SortOrder
     label?: SortOrder
+    description?: SortOrder
     amount?: SortOrder
     date?: SortOrder
     categoryId?: SortOrder
     companyId?: SortOrder
+    fournisseur?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -10183,25 +10241,11 @@ export namespace Prisma {
     amount?: SortOrder
   }
 
-  export type UserCreateNestedManyWithoutCompanyInput = {
-    create?: XOR<UserCreateWithoutCompanyInput, UserUncheckedCreateWithoutCompanyInput> | UserCreateWithoutCompanyInput[] | UserUncheckedCreateWithoutCompanyInput[]
-    connectOrCreate?: UserCreateOrConnectWithoutCompanyInput | UserCreateOrConnectWithoutCompanyInput[]
-    createMany?: UserCreateManyCompanyInputEnvelope
-    connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
-  }
-
   export type CategoryCreateNestedManyWithoutCompanyInput = {
     create?: XOR<CategoryCreateWithoutCompanyInput, CategoryUncheckedCreateWithoutCompanyInput> | CategoryCreateWithoutCompanyInput[] | CategoryUncheckedCreateWithoutCompanyInput[]
     connectOrCreate?: CategoryCreateOrConnectWithoutCompanyInput | CategoryCreateOrConnectWithoutCompanyInput[]
     createMany?: CategoryCreateManyCompanyInputEnvelope
     connect?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
-  }
-
-  export type TransactionCreateNestedManyWithoutCompanyInput = {
-    create?: XOR<TransactionCreateWithoutCompanyInput, TransactionUncheckedCreateWithoutCompanyInput> | TransactionCreateWithoutCompanyInput[] | TransactionUncheckedCreateWithoutCompanyInput[]
-    connectOrCreate?: TransactionCreateOrConnectWithoutCompanyInput | TransactionCreateOrConnectWithoutCompanyInput[]
-    createMany?: TransactionCreateManyCompanyInputEnvelope
-    connect?: TransactionWhereUniqueInput | TransactionWhereUniqueInput[]
   }
 
   export type CostCreateNestedManyWithoutCompanyInput = {
@@ -10218,7 +10262,14 @@ export namespace Prisma {
     connect?: RevenueWhereUniqueInput | RevenueWhereUniqueInput[]
   }
 
-  export type UserUncheckedCreateNestedManyWithoutCompanyInput = {
+  export type TransactionCreateNestedManyWithoutCompanyInput = {
+    create?: XOR<TransactionCreateWithoutCompanyInput, TransactionUncheckedCreateWithoutCompanyInput> | TransactionCreateWithoutCompanyInput[] | TransactionUncheckedCreateWithoutCompanyInput[]
+    connectOrCreate?: TransactionCreateOrConnectWithoutCompanyInput | TransactionCreateOrConnectWithoutCompanyInput[]
+    createMany?: TransactionCreateManyCompanyInputEnvelope
+    connect?: TransactionWhereUniqueInput | TransactionWhereUniqueInput[]
+  }
+
+  export type UserCreateNestedManyWithoutCompanyInput = {
     create?: XOR<UserCreateWithoutCompanyInput, UserUncheckedCreateWithoutCompanyInput> | UserCreateWithoutCompanyInput[] | UserUncheckedCreateWithoutCompanyInput[]
     connectOrCreate?: UserCreateOrConnectWithoutCompanyInput | UserCreateOrConnectWithoutCompanyInput[]
     createMany?: UserCreateManyCompanyInputEnvelope
@@ -10230,13 +10281,6 @@ export namespace Prisma {
     connectOrCreate?: CategoryCreateOrConnectWithoutCompanyInput | CategoryCreateOrConnectWithoutCompanyInput[]
     createMany?: CategoryCreateManyCompanyInputEnvelope
     connect?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
-  }
-
-  export type TransactionUncheckedCreateNestedManyWithoutCompanyInput = {
-    create?: XOR<TransactionCreateWithoutCompanyInput, TransactionUncheckedCreateWithoutCompanyInput> | TransactionCreateWithoutCompanyInput[] | TransactionUncheckedCreateWithoutCompanyInput[]
-    connectOrCreate?: TransactionCreateOrConnectWithoutCompanyInput | TransactionCreateOrConnectWithoutCompanyInput[]
-    createMany?: TransactionCreateManyCompanyInputEnvelope
-    connect?: TransactionWhereUniqueInput | TransactionWhereUniqueInput[]
   }
 
   export type CostUncheckedCreateNestedManyWithoutCompanyInput = {
@@ -10253,26 +10297,26 @@ export namespace Prisma {
     connect?: RevenueWhereUniqueInput | RevenueWhereUniqueInput[]
   }
 
+  export type TransactionUncheckedCreateNestedManyWithoutCompanyInput = {
+    create?: XOR<TransactionCreateWithoutCompanyInput, TransactionUncheckedCreateWithoutCompanyInput> | TransactionCreateWithoutCompanyInput[] | TransactionUncheckedCreateWithoutCompanyInput[]
+    connectOrCreate?: TransactionCreateOrConnectWithoutCompanyInput | TransactionCreateOrConnectWithoutCompanyInput[]
+    createMany?: TransactionCreateManyCompanyInputEnvelope
+    connect?: TransactionWhereUniqueInput | TransactionWhereUniqueInput[]
+  }
+
+  export type UserUncheckedCreateNestedManyWithoutCompanyInput = {
+    create?: XOR<UserCreateWithoutCompanyInput, UserUncheckedCreateWithoutCompanyInput> | UserCreateWithoutCompanyInput[] | UserUncheckedCreateWithoutCompanyInput[]
+    connectOrCreate?: UserCreateOrConnectWithoutCompanyInput | UserCreateOrConnectWithoutCompanyInput[]
+    createMany?: UserCreateManyCompanyInputEnvelope
+    connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
+  }
+
   export type StringFieldUpdateOperationsInput = {
     set?: string
   }
 
   export type DateTimeFieldUpdateOperationsInput = {
     set?: Date | string
-  }
-
-  export type UserUpdateManyWithoutCompanyNestedInput = {
-    create?: XOR<UserCreateWithoutCompanyInput, UserUncheckedCreateWithoutCompanyInput> | UserCreateWithoutCompanyInput[] | UserUncheckedCreateWithoutCompanyInput[]
-    connectOrCreate?: UserCreateOrConnectWithoutCompanyInput | UserCreateOrConnectWithoutCompanyInput[]
-    upsert?: UserUpsertWithWhereUniqueWithoutCompanyInput | UserUpsertWithWhereUniqueWithoutCompanyInput[]
-    createMany?: UserCreateManyCompanyInputEnvelope
-    set?: UserWhereUniqueInput | UserWhereUniqueInput[]
-    disconnect?: UserWhereUniqueInput | UserWhereUniqueInput[]
-    delete?: UserWhereUniqueInput | UserWhereUniqueInput[]
-    connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
-    update?: UserUpdateWithWhereUniqueWithoutCompanyInput | UserUpdateWithWhereUniqueWithoutCompanyInput[]
-    updateMany?: UserUpdateManyWithWhereWithoutCompanyInput | UserUpdateManyWithWhereWithoutCompanyInput[]
-    deleteMany?: UserScalarWhereInput | UserScalarWhereInput[]
   }
 
   export type CategoryUpdateManyWithoutCompanyNestedInput = {
@@ -10287,20 +10331,6 @@ export namespace Prisma {
     update?: CategoryUpdateWithWhereUniqueWithoutCompanyInput | CategoryUpdateWithWhereUniqueWithoutCompanyInput[]
     updateMany?: CategoryUpdateManyWithWhereWithoutCompanyInput | CategoryUpdateManyWithWhereWithoutCompanyInput[]
     deleteMany?: CategoryScalarWhereInput | CategoryScalarWhereInput[]
-  }
-
-  export type TransactionUpdateManyWithoutCompanyNestedInput = {
-    create?: XOR<TransactionCreateWithoutCompanyInput, TransactionUncheckedCreateWithoutCompanyInput> | TransactionCreateWithoutCompanyInput[] | TransactionUncheckedCreateWithoutCompanyInput[]
-    connectOrCreate?: TransactionCreateOrConnectWithoutCompanyInput | TransactionCreateOrConnectWithoutCompanyInput[]
-    upsert?: TransactionUpsertWithWhereUniqueWithoutCompanyInput | TransactionUpsertWithWhereUniqueWithoutCompanyInput[]
-    createMany?: TransactionCreateManyCompanyInputEnvelope
-    set?: TransactionWhereUniqueInput | TransactionWhereUniqueInput[]
-    disconnect?: TransactionWhereUniqueInput | TransactionWhereUniqueInput[]
-    delete?: TransactionWhereUniqueInput | TransactionWhereUniqueInput[]
-    connect?: TransactionWhereUniqueInput | TransactionWhereUniqueInput[]
-    update?: TransactionUpdateWithWhereUniqueWithoutCompanyInput | TransactionUpdateWithWhereUniqueWithoutCompanyInput[]
-    updateMany?: TransactionUpdateManyWithWhereWithoutCompanyInput | TransactionUpdateManyWithWhereWithoutCompanyInput[]
-    deleteMany?: TransactionScalarWhereInput | TransactionScalarWhereInput[]
   }
 
   export type CostUpdateManyWithoutCompanyNestedInput = {
@@ -10331,7 +10361,21 @@ export namespace Prisma {
     deleteMany?: RevenueScalarWhereInput | RevenueScalarWhereInput[]
   }
 
-  export type UserUncheckedUpdateManyWithoutCompanyNestedInput = {
+  export type TransactionUpdateManyWithoutCompanyNestedInput = {
+    create?: XOR<TransactionCreateWithoutCompanyInput, TransactionUncheckedCreateWithoutCompanyInput> | TransactionCreateWithoutCompanyInput[] | TransactionUncheckedCreateWithoutCompanyInput[]
+    connectOrCreate?: TransactionCreateOrConnectWithoutCompanyInput | TransactionCreateOrConnectWithoutCompanyInput[]
+    upsert?: TransactionUpsertWithWhereUniqueWithoutCompanyInput | TransactionUpsertWithWhereUniqueWithoutCompanyInput[]
+    createMany?: TransactionCreateManyCompanyInputEnvelope
+    set?: TransactionWhereUniqueInput | TransactionWhereUniqueInput[]
+    disconnect?: TransactionWhereUniqueInput | TransactionWhereUniqueInput[]
+    delete?: TransactionWhereUniqueInput | TransactionWhereUniqueInput[]
+    connect?: TransactionWhereUniqueInput | TransactionWhereUniqueInput[]
+    update?: TransactionUpdateWithWhereUniqueWithoutCompanyInput | TransactionUpdateWithWhereUniqueWithoutCompanyInput[]
+    updateMany?: TransactionUpdateManyWithWhereWithoutCompanyInput | TransactionUpdateManyWithWhereWithoutCompanyInput[]
+    deleteMany?: TransactionScalarWhereInput | TransactionScalarWhereInput[]
+  }
+
+  export type UserUpdateManyWithoutCompanyNestedInput = {
     create?: XOR<UserCreateWithoutCompanyInput, UserUncheckedCreateWithoutCompanyInput> | UserCreateWithoutCompanyInput[] | UserUncheckedCreateWithoutCompanyInput[]
     connectOrCreate?: UserCreateOrConnectWithoutCompanyInput | UserCreateOrConnectWithoutCompanyInput[]
     upsert?: UserUpsertWithWhereUniqueWithoutCompanyInput | UserUpsertWithWhereUniqueWithoutCompanyInput[]
@@ -10357,20 +10401,6 @@ export namespace Prisma {
     update?: CategoryUpdateWithWhereUniqueWithoutCompanyInput | CategoryUpdateWithWhereUniqueWithoutCompanyInput[]
     updateMany?: CategoryUpdateManyWithWhereWithoutCompanyInput | CategoryUpdateManyWithWhereWithoutCompanyInput[]
     deleteMany?: CategoryScalarWhereInput | CategoryScalarWhereInput[]
-  }
-
-  export type TransactionUncheckedUpdateManyWithoutCompanyNestedInput = {
-    create?: XOR<TransactionCreateWithoutCompanyInput, TransactionUncheckedCreateWithoutCompanyInput> | TransactionCreateWithoutCompanyInput[] | TransactionUncheckedCreateWithoutCompanyInput[]
-    connectOrCreate?: TransactionCreateOrConnectWithoutCompanyInput | TransactionCreateOrConnectWithoutCompanyInput[]
-    upsert?: TransactionUpsertWithWhereUniqueWithoutCompanyInput | TransactionUpsertWithWhereUniqueWithoutCompanyInput[]
-    createMany?: TransactionCreateManyCompanyInputEnvelope
-    set?: TransactionWhereUniqueInput | TransactionWhereUniqueInput[]
-    disconnect?: TransactionWhereUniqueInput | TransactionWhereUniqueInput[]
-    delete?: TransactionWhereUniqueInput | TransactionWhereUniqueInput[]
-    connect?: TransactionWhereUniqueInput | TransactionWhereUniqueInput[]
-    update?: TransactionUpdateWithWhereUniqueWithoutCompanyInput | TransactionUpdateWithWhereUniqueWithoutCompanyInput[]
-    updateMany?: TransactionUpdateManyWithWhereWithoutCompanyInput | TransactionUpdateManyWithWhereWithoutCompanyInput[]
-    deleteMany?: TransactionScalarWhereInput | TransactionScalarWhereInput[]
   }
 
   export type CostUncheckedUpdateManyWithoutCompanyNestedInput = {
@@ -10401,6 +10431,34 @@ export namespace Prisma {
     deleteMany?: RevenueScalarWhereInput | RevenueScalarWhereInput[]
   }
 
+  export type TransactionUncheckedUpdateManyWithoutCompanyNestedInput = {
+    create?: XOR<TransactionCreateWithoutCompanyInput, TransactionUncheckedCreateWithoutCompanyInput> | TransactionCreateWithoutCompanyInput[] | TransactionUncheckedCreateWithoutCompanyInput[]
+    connectOrCreate?: TransactionCreateOrConnectWithoutCompanyInput | TransactionCreateOrConnectWithoutCompanyInput[]
+    upsert?: TransactionUpsertWithWhereUniqueWithoutCompanyInput | TransactionUpsertWithWhereUniqueWithoutCompanyInput[]
+    createMany?: TransactionCreateManyCompanyInputEnvelope
+    set?: TransactionWhereUniqueInput | TransactionWhereUniqueInput[]
+    disconnect?: TransactionWhereUniqueInput | TransactionWhereUniqueInput[]
+    delete?: TransactionWhereUniqueInput | TransactionWhereUniqueInput[]
+    connect?: TransactionWhereUniqueInput | TransactionWhereUniqueInput[]
+    update?: TransactionUpdateWithWhereUniqueWithoutCompanyInput | TransactionUpdateWithWhereUniqueWithoutCompanyInput[]
+    updateMany?: TransactionUpdateManyWithWhereWithoutCompanyInput | TransactionUpdateManyWithWhereWithoutCompanyInput[]
+    deleteMany?: TransactionScalarWhereInput | TransactionScalarWhereInput[]
+  }
+
+  export type UserUncheckedUpdateManyWithoutCompanyNestedInput = {
+    create?: XOR<UserCreateWithoutCompanyInput, UserUncheckedCreateWithoutCompanyInput> | UserCreateWithoutCompanyInput[] | UserUncheckedCreateWithoutCompanyInput[]
+    connectOrCreate?: UserCreateOrConnectWithoutCompanyInput | UserCreateOrConnectWithoutCompanyInput[]
+    upsert?: UserUpsertWithWhereUniqueWithoutCompanyInput | UserUpsertWithWhereUniqueWithoutCompanyInput[]
+    createMany?: UserCreateManyCompanyInputEnvelope
+    set?: UserWhereUniqueInput | UserWhereUniqueInput[]
+    disconnect?: UserWhereUniqueInput | UserWhereUniqueInput[]
+    delete?: UserWhereUniqueInput | UserWhereUniqueInput[]
+    connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
+    update?: UserUpdateWithWhereUniqueWithoutCompanyInput | UserUpdateWithWhereUniqueWithoutCompanyInput[]
+    updateMany?: UserUpdateManyWithWhereWithoutCompanyInput | UserUpdateManyWithWhereWithoutCompanyInput[]
+    deleteMany?: UserScalarWhereInput | UserScalarWhereInput[]
+  }
+
   export type CompanyCreateNestedOneWithoutUsersInput = {
     create?: XOR<CompanyCreateWithoutUsersInput, CompanyUncheckedCreateWithoutUsersInput>
     connectOrCreate?: CompanyCreateOrConnectWithoutUsersInput
@@ -10425,6 +10483,12 @@ export namespace Prisma {
     set?: string | null
   }
 
+  export type CompanyCreateNestedOneWithoutCategoriesInput = {
+    create?: XOR<CompanyCreateWithoutCategoriesInput, CompanyUncheckedCreateWithoutCategoriesInput>
+    connectOrCreate?: CompanyCreateOrConnectWithoutCategoriesInput
+    connect?: CompanyWhereUniqueInput
+  }
+
   export type CategoryCreateNestedOneWithoutSubcategoriesInput = {
     create?: XOR<CategoryCreateWithoutSubcategoriesInput, CategoryUncheckedCreateWithoutSubcategoriesInput>
     connectOrCreate?: CategoryCreateOrConnectWithoutSubcategoriesInput
@@ -10436,19 +10500,6 @@ export namespace Prisma {
     connectOrCreate?: CategoryCreateOrConnectWithoutParentInput | CategoryCreateOrConnectWithoutParentInput[]
     createMany?: CategoryCreateManyParentInputEnvelope
     connect?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
-  }
-
-  export type CompanyCreateNestedOneWithoutCategoriesInput = {
-    create?: XOR<CompanyCreateWithoutCategoriesInput, CompanyUncheckedCreateWithoutCategoriesInput>
-    connectOrCreate?: CompanyCreateOrConnectWithoutCategoriesInput
-    connect?: CompanyWhereUniqueInput
-  }
-
-  export type TransactionCreateNestedManyWithoutCategoryInput = {
-    create?: XOR<TransactionCreateWithoutCategoryInput, TransactionUncheckedCreateWithoutCategoryInput> | TransactionCreateWithoutCategoryInput[] | TransactionUncheckedCreateWithoutCategoryInput[]
-    connectOrCreate?: TransactionCreateOrConnectWithoutCategoryInput | TransactionCreateOrConnectWithoutCategoryInput[]
-    createMany?: TransactionCreateManyCategoryInputEnvelope
-    connect?: TransactionWhereUniqueInput | TransactionWhereUniqueInput[]
   }
 
   export type CostCreateNestedManyWithoutCategoryInput = {
@@ -10465,18 +10516,18 @@ export namespace Prisma {
     connect?: RevenueWhereUniqueInput | RevenueWhereUniqueInput[]
   }
 
+  export type TransactionCreateNestedManyWithoutCategoryInput = {
+    create?: XOR<TransactionCreateWithoutCategoryInput, TransactionUncheckedCreateWithoutCategoryInput> | TransactionCreateWithoutCategoryInput[] | TransactionUncheckedCreateWithoutCategoryInput[]
+    connectOrCreate?: TransactionCreateOrConnectWithoutCategoryInput | TransactionCreateOrConnectWithoutCategoryInput[]
+    createMany?: TransactionCreateManyCategoryInputEnvelope
+    connect?: TransactionWhereUniqueInput | TransactionWhereUniqueInput[]
+  }
+
   export type CategoryUncheckedCreateNestedManyWithoutParentInput = {
     create?: XOR<CategoryCreateWithoutParentInput, CategoryUncheckedCreateWithoutParentInput> | CategoryCreateWithoutParentInput[] | CategoryUncheckedCreateWithoutParentInput[]
     connectOrCreate?: CategoryCreateOrConnectWithoutParentInput | CategoryCreateOrConnectWithoutParentInput[]
     createMany?: CategoryCreateManyParentInputEnvelope
     connect?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
-  }
-
-  export type TransactionUncheckedCreateNestedManyWithoutCategoryInput = {
-    create?: XOR<TransactionCreateWithoutCategoryInput, TransactionUncheckedCreateWithoutCategoryInput> | TransactionCreateWithoutCategoryInput[] | TransactionUncheckedCreateWithoutCategoryInput[]
-    connectOrCreate?: TransactionCreateOrConnectWithoutCategoryInput | TransactionCreateOrConnectWithoutCategoryInput[]
-    createMany?: TransactionCreateManyCategoryInputEnvelope
-    connect?: TransactionWhereUniqueInput | TransactionWhereUniqueInput[]
   }
 
   export type CostUncheckedCreateNestedManyWithoutCategoryInput = {
@@ -10491,6 +10542,21 @@ export namespace Prisma {
     connectOrCreate?: RevenueCreateOrConnectWithoutCategoryInput | RevenueCreateOrConnectWithoutCategoryInput[]
     createMany?: RevenueCreateManyCategoryInputEnvelope
     connect?: RevenueWhereUniqueInput | RevenueWhereUniqueInput[]
+  }
+
+  export type TransactionUncheckedCreateNestedManyWithoutCategoryInput = {
+    create?: XOR<TransactionCreateWithoutCategoryInput, TransactionUncheckedCreateWithoutCategoryInput> | TransactionCreateWithoutCategoryInput[] | TransactionUncheckedCreateWithoutCategoryInput[]
+    connectOrCreate?: TransactionCreateOrConnectWithoutCategoryInput | TransactionCreateOrConnectWithoutCategoryInput[]
+    createMany?: TransactionCreateManyCategoryInputEnvelope
+    connect?: TransactionWhereUniqueInput | TransactionWhereUniqueInput[]
+  }
+
+  export type CompanyUpdateOneRequiredWithoutCategoriesNestedInput = {
+    create?: XOR<CompanyCreateWithoutCategoriesInput, CompanyUncheckedCreateWithoutCategoriesInput>
+    connectOrCreate?: CompanyCreateOrConnectWithoutCategoriesInput
+    upsert?: CompanyUpsertWithoutCategoriesInput
+    connect?: CompanyWhereUniqueInput
+    update?: XOR<XOR<CompanyUpdateToOneWithWhereWithoutCategoriesInput, CompanyUpdateWithoutCategoriesInput>, CompanyUncheckedUpdateWithoutCategoriesInput>
   }
 
   export type CategoryUpdateOneWithoutSubcategoriesNestedInput = {
@@ -10515,28 +10581,6 @@ export namespace Prisma {
     update?: CategoryUpdateWithWhereUniqueWithoutParentInput | CategoryUpdateWithWhereUniqueWithoutParentInput[]
     updateMany?: CategoryUpdateManyWithWhereWithoutParentInput | CategoryUpdateManyWithWhereWithoutParentInput[]
     deleteMany?: CategoryScalarWhereInput | CategoryScalarWhereInput[]
-  }
-
-  export type CompanyUpdateOneRequiredWithoutCategoriesNestedInput = {
-    create?: XOR<CompanyCreateWithoutCategoriesInput, CompanyUncheckedCreateWithoutCategoriesInput>
-    connectOrCreate?: CompanyCreateOrConnectWithoutCategoriesInput
-    upsert?: CompanyUpsertWithoutCategoriesInput
-    connect?: CompanyWhereUniqueInput
-    update?: XOR<XOR<CompanyUpdateToOneWithWhereWithoutCategoriesInput, CompanyUpdateWithoutCategoriesInput>, CompanyUncheckedUpdateWithoutCategoriesInput>
-  }
-
-  export type TransactionUpdateManyWithoutCategoryNestedInput = {
-    create?: XOR<TransactionCreateWithoutCategoryInput, TransactionUncheckedCreateWithoutCategoryInput> | TransactionCreateWithoutCategoryInput[] | TransactionUncheckedCreateWithoutCategoryInput[]
-    connectOrCreate?: TransactionCreateOrConnectWithoutCategoryInput | TransactionCreateOrConnectWithoutCategoryInput[]
-    upsert?: TransactionUpsertWithWhereUniqueWithoutCategoryInput | TransactionUpsertWithWhereUniqueWithoutCategoryInput[]
-    createMany?: TransactionCreateManyCategoryInputEnvelope
-    set?: TransactionWhereUniqueInput | TransactionWhereUniqueInput[]
-    disconnect?: TransactionWhereUniqueInput | TransactionWhereUniqueInput[]
-    delete?: TransactionWhereUniqueInput | TransactionWhereUniqueInput[]
-    connect?: TransactionWhereUniqueInput | TransactionWhereUniqueInput[]
-    update?: TransactionUpdateWithWhereUniqueWithoutCategoryInput | TransactionUpdateWithWhereUniqueWithoutCategoryInput[]
-    updateMany?: TransactionUpdateManyWithWhereWithoutCategoryInput | TransactionUpdateManyWithWhereWithoutCategoryInput[]
-    deleteMany?: TransactionScalarWhereInput | TransactionScalarWhereInput[]
   }
 
   export type CostUpdateManyWithoutCategoryNestedInput = {
@@ -10567,6 +10611,20 @@ export namespace Prisma {
     deleteMany?: RevenueScalarWhereInput | RevenueScalarWhereInput[]
   }
 
+  export type TransactionUpdateManyWithoutCategoryNestedInput = {
+    create?: XOR<TransactionCreateWithoutCategoryInput, TransactionUncheckedCreateWithoutCategoryInput> | TransactionCreateWithoutCategoryInput[] | TransactionUncheckedCreateWithoutCategoryInput[]
+    connectOrCreate?: TransactionCreateOrConnectWithoutCategoryInput | TransactionCreateOrConnectWithoutCategoryInput[]
+    upsert?: TransactionUpsertWithWhereUniqueWithoutCategoryInput | TransactionUpsertWithWhereUniqueWithoutCategoryInput[]
+    createMany?: TransactionCreateManyCategoryInputEnvelope
+    set?: TransactionWhereUniqueInput | TransactionWhereUniqueInput[]
+    disconnect?: TransactionWhereUniqueInput | TransactionWhereUniqueInput[]
+    delete?: TransactionWhereUniqueInput | TransactionWhereUniqueInput[]
+    connect?: TransactionWhereUniqueInput | TransactionWhereUniqueInput[]
+    update?: TransactionUpdateWithWhereUniqueWithoutCategoryInput | TransactionUpdateWithWhereUniqueWithoutCategoryInput[]
+    updateMany?: TransactionUpdateManyWithWhereWithoutCategoryInput | TransactionUpdateManyWithWhereWithoutCategoryInput[]
+    deleteMany?: TransactionScalarWhereInput | TransactionScalarWhereInput[]
+  }
+
   export type CategoryUncheckedUpdateManyWithoutParentNestedInput = {
     create?: XOR<CategoryCreateWithoutParentInput, CategoryUncheckedCreateWithoutParentInput> | CategoryCreateWithoutParentInput[] | CategoryUncheckedCreateWithoutParentInput[]
     connectOrCreate?: CategoryCreateOrConnectWithoutParentInput | CategoryCreateOrConnectWithoutParentInput[]
@@ -10579,20 +10637,6 @@ export namespace Prisma {
     update?: CategoryUpdateWithWhereUniqueWithoutParentInput | CategoryUpdateWithWhereUniqueWithoutParentInput[]
     updateMany?: CategoryUpdateManyWithWhereWithoutParentInput | CategoryUpdateManyWithWhereWithoutParentInput[]
     deleteMany?: CategoryScalarWhereInput | CategoryScalarWhereInput[]
-  }
-
-  export type TransactionUncheckedUpdateManyWithoutCategoryNestedInput = {
-    create?: XOR<TransactionCreateWithoutCategoryInput, TransactionUncheckedCreateWithoutCategoryInput> | TransactionCreateWithoutCategoryInput[] | TransactionUncheckedCreateWithoutCategoryInput[]
-    connectOrCreate?: TransactionCreateOrConnectWithoutCategoryInput | TransactionCreateOrConnectWithoutCategoryInput[]
-    upsert?: TransactionUpsertWithWhereUniqueWithoutCategoryInput | TransactionUpsertWithWhereUniqueWithoutCategoryInput[]
-    createMany?: TransactionCreateManyCategoryInputEnvelope
-    set?: TransactionWhereUniqueInput | TransactionWhereUniqueInput[]
-    disconnect?: TransactionWhereUniqueInput | TransactionWhereUniqueInput[]
-    delete?: TransactionWhereUniqueInput | TransactionWhereUniqueInput[]
-    connect?: TransactionWhereUniqueInput | TransactionWhereUniqueInput[]
-    update?: TransactionUpdateWithWhereUniqueWithoutCategoryInput | TransactionUpdateWithWhereUniqueWithoutCategoryInput[]
-    updateMany?: TransactionUpdateManyWithWhereWithoutCategoryInput | TransactionUpdateManyWithWhereWithoutCategoryInput[]
-    deleteMany?: TransactionScalarWhereInput | TransactionScalarWhereInput[]
   }
 
   export type CostUncheckedUpdateManyWithoutCategoryNestedInput = {
@@ -10621,6 +10665,20 @@ export namespace Prisma {
     update?: RevenueUpdateWithWhereUniqueWithoutCategoryInput | RevenueUpdateWithWhereUniqueWithoutCategoryInput[]
     updateMany?: RevenueUpdateManyWithWhereWithoutCategoryInput | RevenueUpdateManyWithWhereWithoutCategoryInput[]
     deleteMany?: RevenueScalarWhereInput | RevenueScalarWhereInput[]
+  }
+
+  export type TransactionUncheckedUpdateManyWithoutCategoryNestedInput = {
+    create?: XOR<TransactionCreateWithoutCategoryInput, TransactionUncheckedCreateWithoutCategoryInput> | TransactionCreateWithoutCategoryInput[] | TransactionUncheckedCreateWithoutCategoryInput[]
+    connectOrCreate?: TransactionCreateOrConnectWithoutCategoryInput | TransactionCreateOrConnectWithoutCategoryInput[]
+    upsert?: TransactionUpsertWithWhereUniqueWithoutCategoryInput | TransactionUpsertWithWhereUniqueWithoutCategoryInput[]
+    createMany?: TransactionCreateManyCategoryInputEnvelope
+    set?: TransactionWhereUniqueInput | TransactionWhereUniqueInput[]
+    disconnect?: TransactionWhereUniqueInput | TransactionWhereUniqueInput[]
+    delete?: TransactionWhereUniqueInput | TransactionWhereUniqueInput[]
+    connect?: TransactionWhereUniqueInput | TransactionWhereUniqueInput[]
+    update?: TransactionUpdateWithWhereUniqueWithoutCategoryInput | TransactionUpdateWithWhereUniqueWithoutCategoryInput[]
+    updateMany?: TransactionUpdateManyWithWhereWithoutCategoryInput | TransactionUpdateManyWithWhereWithoutCategoryInput[]
+    deleteMany?: TransactionScalarWhereInput | TransactionScalarWhereInput[]
   }
 
   export type CategoryCreateNestedOneWithoutTransactionsInput = {
@@ -10800,13 +10858,6 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
-  export type NestedEnumUserRoleFilter<$PrismaModel = never> = {
-    equals?: $Enums.UserRole | EnumUserRoleFieldRefInput<$PrismaModel>
-    in?: $Enums.UserRole[] | ListEnumUserRoleFieldRefInput<$PrismaModel>
-    notIn?: $Enums.UserRole[] | ListEnumUserRoleFieldRefInput<$PrismaModel>
-    not?: NestedEnumUserRoleFilter<$PrismaModel> | $Enums.UserRole
-  }
-
   export type NestedStringNullableFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -10821,14 +10872,11 @@ export namespace Prisma {
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
-  export type NestedEnumUserRoleWithAggregatesFilter<$PrismaModel = never> = {
+  export type NestedEnumUserRoleFilter<$PrismaModel = never> = {
     equals?: $Enums.UserRole | EnumUserRoleFieldRefInput<$PrismaModel>
     in?: $Enums.UserRole[] | ListEnumUserRoleFieldRefInput<$PrismaModel>
     notIn?: $Enums.UserRole[] | ListEnumUserRoleFieldRefInput<$PrismaModel>
-    not?: NestedEnumUserRoleWithAggregatesFilter<$PrismaModel> | $Enums.UserRole
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumUserRoleFilter<$PrismaModel>
-    _max?: NestedEnumUserRoleFilter<$PrismaModel>
+    not?: NestedEnumUserRoleFilter<$PrismaModel> | $Enums.UserRole
   }
 
   export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -10857,6 +10905,16 @@ export namespace Prisma {
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type NestedEnumUserRoleWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.UserRole | EnumUserRoleFieldRefInput<$PrismaModel>
+    in?: $Enums.UserRole[] | ListEnumUserRoleFieldRefInput<$PrismaModel>
+    notIn?: $Enums.UserRole[] | ListEnumUserRoleFieldRefInput<$PrismaModel>
+    not?: NestedEnumUserRoleWithAggregatesFilter<$PrismaModel> | $Enums.UserRole
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumUserRoleFilter<$PrismaModel>
+    _max?: NestedEnumUserRoleFilter<$PrismaModel>
   }
 
   export type NestedFloatFilter<$PrismaModel = never> = {
@@ -10941,34 +10999,6 @@ export namespace Prisma {
     _max?: NestedEnumFrequencyNullableFilter<$PrismaModel>
   }
 
-  export type UserCreateWithoutCompanyInput = {
-    id?: string
-    email: string
-    password: string
-    role?: $Enums.UserRole
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type UserUncheckedCreateWithoutCompanyInput = {
-    id?: string
-    email: string
-    password: string
-    role?: $Enums.UserRole
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type UserCreateOrConnectWithoutCompanyInput = {
-    where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutCompanyInput, UserUncheckedCreateWithoutCompanyInput>
-  }
-
-  export type UserCreateManyCompanyInputEnvelope = {
-    data: UserCreateManyCompanyInput | UserCreateManyCompanyInput[]
-    skipDuplicates?: boolean
-  }
-
   export type CategoryCreateWithoutCompanyInput = {
     id?: string
     name: string
@@ -10977,9 +11007,9 @@ export namespace Prisma {
     updatedAt?: Date | string
     parent?: CategoryCreateNestedOneWithoutSubcategoriesInput
     subcategories?: CategoryCreateNestedManyWithoutParentInput
-    transactions?: TransactionCreateNestedManyWithoutCategoryInput
     costs?: CostCreateNestedManyWithoutCategoryInput
     revenues?: RevenueCreateNestedManyWithoutCategoryInput
+    transactions?: TransactionCreateNestedManyWithoutCategoryInput
   }
 
   export type CategoryUncheckedCreateWithoutCompanyInput = {
@@ -10990,9 +11020,9 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     subcategories?: CategoryUncheckedCreateNestedManyWithoutParentInput
-    transactions?: TransactionUncheckedCreateNestedManyWithoutCategoryInput
     costs?: CostUncheckedCreateNestedManyWithoutCategoryInput
     revenues?: RevenueUncheckedCreateNestedManyWithoutCategoryInput
+    transactions?: TransactionUncheckedCreateNestedManyWithoutCategoryInput
   }
 
   export type CategoryCreateOrConnectWithoutCompanyInput = {
@@ -11002,36 +11032,6 @@ export namespace Prisma {
 
   export type CategoryCreateManyCompanyInputEnvelope = {
     data: CategoryCreateManyCompanyInput | CategoryCreateManyCompanyInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type TransactionCreateWithoutCompanyInput = {
-    id?: string
-    label: string
-    amount: number
-    date: Date | string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    category?: CategoryCreateNestedOneWithoutTransactionsInput
-  }
-
-  export type TransactionUncheckedCreateWithoutCompanyInput = {
-    id?: string
-    label: string
-    amount: number
-    date: Date | string
-    categoryId?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type TransactionCreateOrConnectWithoutCompanyInput = {
-    where: TransactionWhereUniqueInput
-    create: XOR<TransactionCreateWithoutCompanyInput, TransactionUncheckedCreateWithoutCompanyInput>
-  }
-
-  export type TransactionCreateManyCompanyInputEnvelope = {
-    data: TransactionCreateManyCompanyInput | TransactionCreateManyCompanyInput[]
     skipDuplicates?: boolean
   }
 
@@ -11107,33 +11107,66 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type UserUpsertWithWhereUniqueWithoutCompanyInput = {
+  export type TransactionCreateWithoutCompanyInput = {
+    id?: string
+    label: string
+    description?: string | null
+    amount: number
+    date: Date | string
+    fournisseur?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    category?: CategoryCreateNestedOneWithoutTransactionsInput
+  }
+
+  export type TransactionUncheckedCreateWithoutCompanyInput = {
+    id?: string
+    label: string
+    description?: string | null
+    amount: number
+    date: Date | string
+    categoryId?: string | null
+    fournisseur?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type TransactionCreateOrConnectWithoutCompanyInput = {
+    where: TransactionWhereUniqueInput
+    create: XOR<TransactionCreateWithoutCompanyInput, TransactionUncheckedCreateWithoutCompanyInput>
+  }
+
+  export type TransactionCreateManyCompanyInputEnvelope = {
+    data: TransactionCreateManyCompanyInput | TransactionCreateManyCompanyInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type UserCreateWithoutCompanyInput = {
+    id?: string
+    email: string
+    password: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    role?: $Enums.UserRole
+  }
+
+  export type UserUncheckedCreateWithoutCompanyInput = {
+    id?: string
+    email: string
+    password: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    role?: $Enums.UserRole
+  }
+
+  export type UserCreateOrConnectWithoutCompanyInput = {
     where: UserWhereUniqueInput
-    update: XOR<UserUpdateWithoutCompanyInput, UserUncheckedUpdateWithoutCompanyInput>
     create: XOR<UserCreateWithoutCompanyInput, UserUncheckedCreateWithoutCompanyInput>
   }
 
-  export type UserUpdateWithWhereUniqueWithoutCompanyInput = {
-    where: UserWhereUniqueInput
-    data: XOR<UserUpdateWithoutCompanyInput, UserUncheckedUpdateWithoutCompanyInput>
-  }
-
-  export type UserUpdateManyWithWhereWithoutCompanyInput = {
-    where: UserScalarWhereInput
-    data: XOR<UserUpdateManyMutationInput, UserUncheckedUpdateManyWithoutCompanyInput>
-  }
-
-  export type UserScalarWhereInput = {
-    AND?: UserScalarWhereInput | UserScalarWhereInput[]
-    OR?: UserScalarWhereInput[]
-    NOT?: UserScalarWhereInput | UserScalarWhereInput[]
-    id?: StringFilter<"User"> | string
-    email?: StringFilter<"User"> | string
-    password?: StringFilter<"User"> | string
-    role?: EnumUserRoleFilter<"User"> | $Enums.UserRole
-    companyId?: StringNullableFilter<"User"> | string | null
-    createdAt?: DateTimeFilter<"User"> | Date | string
-    updatedAt?: DateTimeFilter<"User"> | Date | string
+  export type UserCreateManyCompanyInputEnvelope = {
+    data: UserCreateManyCompanyInput | UserCreateManyCompanyInput[]
+    skipDuplicates?: boolean
   }
 
   export type CategoryUpsertWithWhereUniqueWithoutCompanyInput = {
@@ -11163,36 +11196,6 @@ export namespace Prisma {
     companyId?: StringFilter<"Category"> | string
     createdAt?: DateTimeFilter<"Category"> | Date | string
     updatedAt?: DateTimeFilter<"Category"> | Date | string
-  }
-
-  export type TransactionUpsertWithWhereUniqueWithoutCompanyInput = {
-    where: TransactionWhereUniqueInput
-    update: XOR<TransactionUpdateWithoutCompanyInput, TransactionUncheckedUpdateWithoutCompanyInput>
-    create: XOR<TransactionCreateWithoutCompanyInput, TransactionUncheckedCreateWithoutCompanyInput>
-  }
-
-  export type TransactionUpdateWithWhereUniqueWithoutCompanyInput = {
-    where: TransactionWhereUniqueInput
-    data: XOR<TransactionUpdateWithoutCompanyInput, TransactionUncheckedUpdateWithoutCompanyInput>
-  }
-
-  export type TransactionUpdateManyWithWhereWithoutCompanyInput = {
-    where: TransactionScalarWhereInput
-    data: XOR<TransactionUpdateManyMutationInput, TransactionUncheckedUpdateManyWithoutCompanyInput>
-  }
-
-  export type TransactionScalarWhereInput = {
-    AND?: TransactionScalarWhereInput | TransactionScalarWhereInput[]
-    OR?: TransactionScalarWhereInput[]
-    NOT?: TransactionScalarWhereInput | TransactionScalarWhereInput[]
-    id?: StringFilter<"Transaction"> | string
-    label?: StringFilter<"Transaction"> | string
-    amount?: FloatFilter<"Transaction"> | number
-    date?: DateTimeFilter<"Transaction"> | Date | string
-    categoryId?: StringNullableFilter<"Transaction"> | string | null
-    companyId?: StringFilter<"Transaction"> | string
-    createdAt?: DateTimeFilter<"Transaction"> | Date | string
-    updatedAt?: DateTimeFilter<"Transaction"> | Date | string
   }
 
   export type CostUpsertWithWhereUniqueWithoutCompanyInput = {
@@ -11261,15 +11264,76 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Revenue"> | Date | string
   }
 
+  export type TransactionUpsertWithWhereUniqueWithoutCompanyInput = {
+    where: TransactionWhereUniqueInput
+    update: XOR<TransactionUpdateWithoutCompanyInput, TransactionUncheckedUpdateWithoutCompanyInput>
+    create: XOR<TransactionCreateWithoutCompanyInput, TransactionUncheckedCreateWithoutCompanyInput>
+  }
+
+  export type TransactionUpdateWithWhereUniqueWithoutCompanyInput = {
+    where: TransactionWhereUniqueInput
+    data: XOR<TransactionUpdateWithoutCompanyInput, TransactionUncheckedUpdateWithoutCompanyInput>
+  }
+
+  export type TransactionUpdateManyWithWhereWithoutCompanyInput = {
+    where: TransactionScalarWhereInput
+    data: XOR<TransactionUpdateManyMutationInput, TransactionUncheckedUpdateManyWithoutCompanyInput>
+  }
+
+  export type TransactionScalarWhereInput = {
+    AND?: TransactionScalarWhereInput | TransactionScalarWhereInput[]
+    OR?: TransactionScalarWhereInput[]
+    NOT?: TransactionScalarWhereInput | TransactionScalarWhereInput[]
+    id?: StringFilter<"Transaction"> | string
+    label?: StringFilter<"Transaction"> | string
+    description?: StringNullableFilter<"Transaction"> | string | null
+    amount?: FloatFilter<"Transaction"> | number
+    date?: DateTimeFilter<"Transaction"> | Date | string
+    categoryId?: StringNullableFilter<"Transaction"> | string | null
+    companyId?: StringFilter<"Transaction"> | string
+    fournisseur?: StringNullableFilter<"Transaction"> | string | null
+    createdAt?: DateTimeFilter<"Transaction"> | Date | string
+    updatedAt?: DateTimeFilter<"Transaction"> | Date | string
+  }
+
+  export type UserUpsertWithWhereUniqueWithoutCompanyInput = {
+    where: UserWhereUniqueInput
+    update: XOR<UserUpdateWithoutCompanyInput, UserUncheckedUpdateWithoutCompanyInput>
+    create: XOR<UserCreateWithoutCompanyInput, UserUncheckedCreateWithoutCompanyInput>
+  }
+
+  export type UserUpdateWithWhereUniqueWithoutCompanyInput = {
+    where: UserWhereUniqueInput
+    data: XOR<UserUpdateWithoutCompanyInput, UserUncheckedUpdateWithoutCompanyInput>
+  }
+
+  export type UserUpdateManyWithWhereWithoutCompanyInput = {
+    where: UserScalarWhereInput
+    data: XOR<UserUpdateManyMutationInput, UserUncheckedUpdateManyWithoutCompanyInput>
+  }
+
+  export type UserScalarWhereInput = {
+    AND?: UserScalarWhereInput | UserScalarWhereInput[]
+    OR?: UserScalarWhereInput[]
+    NOT?: UserScalarWhereInput | UserScalarWhereInput[]
+    id?: StringFilter<"User"> | string
+    email?: StringFilter<"User"> | string
+    password?: StringFilter<"User"> | string
+    companyId?: StringNullableFilter<"User"> | string | null
+    createdAt?: DateTimeFilter<"User"> | Date | string
+    updatedAt?: DateTimeFilter<"User"> | Date | string
+    role?: EnumUserRoleFilter<"User"> | $Enums.UserRole
+  }
+
   export type CompanyCreateWithoutUsersInput = {
     id?: string
     name: string
     createdAt?: Date | string
     updatedAt?: Date | string
     categories?: CategoryCreateNestedManyWithoutCompanyInput
-    transactions?: TransactionCreateNestedManyWithoutCompanyInput
     costs?: CostCreateNestedManyWithoutCompanyInput
     revenues?: RevenueCreateNestedManyWithoutCompanyInput
+    transactions?: TransactionCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyUncheckedCreateWithoutUsersInput = {
@@ -11278,9 +11342,9 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     categories?: CategoryUncheckedCreateNestedManyWithoutCompanyInput
-    transactions?: TransactionUncheckedCreateNestedManyWithoutCompanyInput
     costs?: CostUncheckedCreateNestedManyWithoutCompanyInput
     revenues?: RevenueUncheckedCreateNestedManyWithoutCompanyInput
+    transactions?: TransactionUncheckedCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyCreateOrConnectWithoutUsersInput = {
@@ -11305,9 +11369,9 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     categories?: CategoryUpdateManyWithoutCompanyNestedInput
-    transactions?: TransactionUpdateManyWithoutCompanyNestedInput
     costs?: CostUpdateManyWithoutCompanyNestedInput
     revenues?: RevenueUpdateManyWithoutCompanyNestedInput
+    transactions?: TransactionUpdateManyWithoutCompanyNestedInput
   }
 
   export type CompanyUncheckedUpdateWithoutUsersInput = {
@@ -11316,9 +11380,36 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     categories?: CategoryUncheckedUpdateManyWithoutCompanyNestedInput
-    transactions?: TransactionUncheckedUpdateManyWithoutCompanyNestedInput
     costs?: CostUncheckedUpdateManyWithoutCompanyNestedInput
     revenues?: RevenueUncheckedUpdateManyWithoutCompanyNestedInput
+    transactions?: TransactionUncheckedUpdateManyWithoutCompanyNestedInput
+  }
+
+  export type CompanyCreateWithoutCategoriesInput = {
+    id?: string
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    costs?: CostCreateNestedManyWithoutCompanyInput
+    revenues?: RevenueCreateNestedManyWithoutCompanyInput
+    transactions?: TransactionCreateNestedManyWithoutCompanyInput
+    users?: UserCreateNestedManyWithoutCompanyInput
+  }
+
+  export type CompanyUncheckedCreateWithoutCategoriesInput = {
+    id?: string
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    costs?: CostUncheckedCreateNestedManyWithoutCompanyInput
+    revenues?: RevenueUncheckedCreateNestedManyWithoutCompanyInput
+    transactions?: TransactionUncheckedCreateNestedManyWithoutCompanyInput
+    users?: UserUncheckedCreateNestedManyWithoutCompanyInput
+  }
+
+  export type CompanyCreateOrConnectWithoutCategoriesInput = {
+    where: CompanyWhereUniqueInput
+    create: XOR<CompanyCreateWithoutCategoriesInput, CompanyUncheckedCreateWithoutCategoriesInput>
   }
 
   export type CategoryCreateWithoutSubcategoriesInput = {
@@ -11327,11 +11418,11 @@ export namespace Prisma {
     color: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    parent?: CategoryCreateNestedOneWithoutSubcategoriesInput
     company: CompanyCreateNestedOneWithoutCategoriesInput
-    transactions?: TransactionCreateNestedManyWithoutCategoryInput
+    parent?: CategoryCreateNestedOneWithoutSubcategoriesInput
     costs?: CostCreateNestedManyWithoutCategoryInput
     revenues?: RevenueCreateNestedManyWithoutCategoryInput
+    transactions?: TransactionCreateNestedManyWithoutCategoryInput
   }
 
   export type CategoryUncheckedCreateWithoutSubcategoriesInput = {
@@ -11342,9 +11433,9 @@ export namespace Prisma {
     companyId: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    transactions?: TransactionUncheckedCreateNestedManyWithoutCategoryInput
     costs?: CostUncheckedCreateNestedManyWithoutCategoryInput
     revenues?: RevenueUncheckedCreateNestedManyWithoutCategoryInput
+    transactions?: TransactionUncheckedCreateNestedManyWithoutCategoryInput
   }
 
   export type CategoryCreateOrConnectWithoutSubcategoriesInput = {
@@ -11358,11 +11449,11 @@ export namespace Prisma {
     color: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    subcategories?: CategoryCreateNestedManyWithoutParentInput
     company: CompanyCreateNestedOneWithoutCategoriesInput
-    transactions?: TransactionCreateNestedManyWithoutCategoryInput
+    subcategories?: CategoryCreateNestedManyWithoutParentInput
     costs?: CostCreateNestedManyWithoutCategoryInput
     revenues?: RevenueCreateNestedManyWithoutCategoryInput
+    transactions?: TransactionCreateNestedManyWithoutCategoryInput
   }
 
   export type CategoryUncheckedCreateWithoutParentInput = {
@@ -11373,9 +11464,9 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     subcategories?: CategoryUncheckedCreateNestedManyWithoutParentInput
-    transactions?: TransactionUncheckedCreateNestedManyWithoutCategoryInput
     costs?: CostUncheckedCreateNestedManyWithoutCategoryInput
     revenues?: RevenueUncheckedCreateNestedManyWithoutCategoryInput
+    transactions?: TransactionUncheckedCreateNestedManyWithoutCategoryInput
   }
 
   export type CategoryCreateOrConnectWithoutParentInput = {
@@ -11385,63 +11476,6 @@ export namespace Prisma {
 
   export type CategoryCreateManyParentInputEnvelope = {
     data: CategoryCreateManyParentInput | CategoryCreateManyParentInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type CompanyCreateWithoutCategoriesInput = {
-    id?: string
-    name: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    users?: UserCreateNestedManyWithoutCompanyInput
-    transactions?: TransactionCreateNestedManyWithoutCompanyInput
-    costs?: CostCreateNestedManyWithoutCompanyInput
-    revenues?: RevenueCreateNestedManyWithoutCompanyInput
-  }
-
-  export type CompanyUncheckedCreateWithoutCategoriesInput = {
-    id?: string
-    name: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    users?: UserUncheckedCreateNestedManyWithoutCompanyInput
-    transactions?: TransactionUncheckedCreateNestedManyWithoutCompanyInput
-    costs?: CostUncheckedCreateNestedManyWithoutCompanyInput
-    revenues?: RevenueUncheckedCreateNestedManyWithoutCompanyInput
-  }
-
-  export type CompanyCreateOrConnectWithoutCategoriesInput = {
-    where: CompanyWhereUniqueInput
-    create: XOR<CompanyCreateWithoutCategoriesInput, CompanyUncheckedCreateWithoutCategoriesInput>
-  }
-
-  export type TransactionCreateWithoutCategoryInput = {
-    id?: string
-    label: string
-    amount: number
-    date: Date | string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    company: CompanyCreateNestedOneWithoutTransactionsInput
-  }
-
-  export type TransactionUncheckedCreateWithoutCategoryInput = {
-    id?: string
-    label: string
-    amount: number
-    date: Date | string
-    companyId: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type TransactionCreateOrConnectWithoutCategoryInput = {
-    where: TransactionWhereUniqueInput
-    create: XOR<TransactionCreateWithoutCategoryInput, TransactionUncheckedCreateWithoutCategoryInput>
-  }
-
-  export type TransactionCreateManyCategoryInputEnvelope = {
-    data: TransactionCreateManyCategoryInput | TransactionCreateManyCategoryInput[]
     skipDuplicates?: boolean
   }
 
@@ -11517,57 +11551,38 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type CategoryUpsertWithoutSubcategoriesInput = {
-    update: XOR<CategoryUpdateWithoutSubcategoriesInput, CategoryUncheckedUpdateWithoutSubcategoriesInput>
-    create: XOR<CategoryCreateWithoutSubcategoriesInput, CategoryUncheckedCreateWithoutSubcategoriesInput>
-    where?: CategoryWhereInput
+  export type TransactionCreateWithoutCategoryInput = {
+    id?: string
+    label: string
+    description?: string | null
+    amount: number
+    date: Date | string
+    fournisseur?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    company: CompanyCreateNestedOneWithoutTransactionsInput
   }
 
-  export type CategoryUpdateToOneWithWhereWithoutSubcategoriesInput = {
-    where?: CategoryWhereInput
-    data: XOR<CategoryUpdateWithoutSubcategoriesInput, CategoryUncheckedUpdateWithoutSubcategoriesInput>
+  export type TransactionUncheckedCreateWithoutCategoryInput = {
+    id?: string
+    label: string
+    description?: string | null
+    amount: number
+    date: Date | string
+    companyId: string
+    fournisseur?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
-  export type CategoryUpdateWithoutSubcategoriesInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    color?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    parent?: CategoryUpdateOneWithoutSubcategoriesNestedInput
-    company?: CompanyUpdateOneRequiredWithoutCategoriesNestedInput
-    transactions?: TransactionUpdateManyWithoutCategoryNestedInput
-    costs?: CostUpdateManyWithoutCategoryNestedInput
-    revenues?: RevenueUpdateManyWithoutCategoryNestedInput
+  export type TransactionCreateOrConnectWithoutCategoryInput = {
+    where: TransactionWhereUniqueInput
+    create: XOR<TransactionCreateWithoutCategoryInput, TransactionUncheckedCreateWithoutCategoryInput>
   }
 
-  export type CategoryUncheckedUpdateWithoutSubcategoriesInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    color?: StringFieldUpdateOperationsInput | string
-    parentId?: NullableStringFieldUpdateOperationsInput | string | null
-    companyId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    transactions?: TransactionUncheckedUpdateManyWithoutCategoryNestedInput
-    costs?: CostUncheckedUpdateManyWithoutCategoryNestedInput
-    revenues?: RevenueUncheckedUpdateManyWithoutCategoryNestedInput
-  }
-
-  export type CategoryUpsertWithWhereUniqueWithoutParentInput = {
-    where: CategoryWhereUniqueInput
-    update: XOR<CategoryUpdateWithoutParentInput, CategoryUncheckedUpdateWithoutParentInput>
-    create: XOR<CategoryCreateWithoutParentInput, CategoryUncheckedCreateWithoutParentInput>
-  }
-
-  export type CategoryUpdateWithWhereUniqueWithoutParentInput = {
-    where: CategoryWhereUniqueInput
-    data: XOR<CategoryUpdateWithoutParentInput, CategoryUncheckedUpdateWithoutParentInput>
-  }
-
-  export type CategoryUpdateManyWithWhereWithoutParentInput = {
-    where: CategoryScalarWhereInput
-    data: XOR<CategoryUpdateManyMutationInput, CategoryUncheckedUpdateManyWithoutParentInput>
+  export type TransactionCreateManyCategoryInputEnvelope = {
+    data: TransactionCreateManyCategoryInput | TransactionCreateManyCategoryInput[]
+    skipDuplicates?: boolean
   }
 
   export type CompanyUpsertWithoutCategoriesInput = {
@@ -11586,10 +11601,10 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    users?: UserUpdateManyWithoutCompanyNestedInput
-    transactions?: TransactionUpdateManyWithoutCompanyNestedInput
     costs?: CostUpdateManyWithoutCompanyNestedInput
     revenues?: RevenueUpdateManyWithoutCompanyNestedInput
+    transactions?: TransactionUpdateManyWithoutCompanyNestedInput
+    users?: UserUpdateManyWithoutCompanyNestedInput
   }
 
   export type CompanyUncheckedUpdateWithoutCategoriesInput = {
@@ -11597,26 +11612,63 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    users?: UserUncheckedUpdateManyWithoutCompanyNestedInput
-    transactions?: TransactionUncheckedUpdateManyWithoutCompanyNestedInput
     costs?: CostUncheckedUpdateManyWithoutCompanyNestedInput
     revenues?: RevenueUncheckedUpdateManyWithoutCompanyNestedInput
+    transactions?: TransactionUncheckedUpdateManyWithoutCompanyNestedInput
+    users?: UserUncheckedUpdateManyWithoutCompanyNestedInput
   }
 
-  export type TransactionUpsertWithWhereUniqueWithoutCategoryInput = {
-    where: TransactionWhereUniqueInput
-    update: XOR<TransactionUpdateWithoutCategoryInput, TransactionUncheckedUpdateWithoutCategoryInput>
-    create: XOR<TransactionCreateWithoutCategoryInput, TransactionUncheckedCreateWithoutCategoryInput>
+  export type CategoryUpsertWithoutSubcategoriesInput = {
+    update: XOR<CategoryUpdateWithoutSubcategoriesInput, CategoryUncheckedUpdateWithoutSubcategoriesInput>
+    create: XOR<CategoryCreateWithoutSubcategoriesInput, CategoryUncheckedCreateWithoutSubcategoriesInput>
+    where?: CategoryWhereInput
   }
 
-  export type TransactionUpdateWithWhereUniqueWithoutCategoryInput = {
-    where: TransactionWhereUniqueInput
-    data: XOR<TransactionUpdateWithoutCategoryInput, TransactionUncheckedUpdateWithoutCategoryInput>
+  export type CategoryUpdateToOneWithWhereWithoutSubcategoriesInput = {
+    where?: CategoryWhereInput
+    data: XOR<CategoryUpdateWithoutSubcategoriesInput, CategoryUncheckedUpdateWithoutSubcategoriesInput>
   }
 
-  export type TransactionUpdateManyWithWhereWithoutCategoryInput = {
-    where: TransactionScalarWhereInput
-    data: XOR<TransactionUpdateManyMutationInput, TransactionUncheckedUpdateManyWithoutCategoryInput>
+  export type CategoryUpdateWithoutSubcategoriesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    color?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    company?: CompanyUpdateOneRequiredWithoutCategoriesNestedInput
+    parent?: CategoryUpdateOneWithoutSubcategoriesNestedInput
+    costs?: CostUpdateManyWithoutCategoryNestedInput
+    revenues?: RevenueUpdateManyWithoutCategoryNestedInput
+    transactions?: TransactionUpdateManyWithoutCategoryNestedInput
+  }
+
+  export type CategoryUncheckedUpdateWithoutSubcategoriesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    color?: StringFieldUpdateOperationsInput | string
+    parentId?: NullableStringFieldUpdateOperationsInput | string | null
+    companyId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    costs?: CostUncheckedUpdateManyWithoutCategoryNestedInput
+    revenues?: RevenueUncheckedUpdateManyWithoutCategoryNestedInput
+    transactions?: TransactionUncheckedUpdateManyWithoutCategoryNestedInput
+  }
+
+  export type CategoryUpsertWithWhereUniqueWithoutParentInput = {
+    where: CategoryWhereUniqueInput
+    update: XOR<CategoryUpdateWithoutParentInput, CategoryUncheckedUpdateWithoutParentInput>
+    create: XOR<CategoryCreateWithoutParentInput, CategoryUncheckedCreateWithoutParentInput>
+  }
+
+  export type CategoryUpdateWithWhereUniqueWithoutParentInput = {
+    where: CategoryWhereUniqueInput
+    data: XOR<CategoryUpdateWithoutParentInput, CategoryUncheckedUpdateWithoutParentInput>
+  }
+
+  export type CategoryUpdateManyWithWhereWithoutParentInput = {
+    where: CategoryScalarWhereInput
+    data: XOR<CategoryUpdateManyMutationInput, CategoryUncheckedUpdateManyWithoutParentInput>
   }
 
   export type CostUpsertWithWhereUniqueWithoutCategoryInput = {
@@ -11651,15 +11703,31 @@ export namespace Prisma {
     data: XOR<RevenueUpdateManyMutationInput, RevenueUncheckedUpdateManyWithoutCategoryInput>
   }
 
+  export type TransactionUpsertWithWhereUniqueWithoutCategoryInput = {
+    where: TransactionWhereUniqueInput
+    update: XOR<TransactionUpdateWithoutCategoryInput, TransactionUncheckedUpdateWithoutCategoryInput>
+    create: XOR<TransactionCreateWithoutCategoryInput, TransactionUncheckedCreateWithoutCategoryInput>
+  }
+
+  export type TransactionUpdateWithWhereUniqueWithoutCategoryInput = {
+    where: TransactionWhereUniqueInput
+    data: XOR<TransactionUpdateWithoutCategoryInput, TransactionUncheckedUpdateWithoutCategoryInput>
+  }
+
+  export type TransactionUpdateManyWithWhereWithoutCategoryInput = {
+    where: TransactionScalarWhereInput
+    data: XOR<TransactionUpdateManyMutationInput, TransactionUncheckedUpdateManyWithoutCategoryInput>
+  }
+
   export type CategoryCreateWithoutTransactionsInput = {
     id?: string
     name: string
     color: string
     createdAt?: Date | string
     updatedAt?: Date | string
+    company: CompanyCreateNestedOneWithoutCategoriesInput
     parent?: CategoryCreateNestedOneWithoutSubcategoriesInput
     subcategories?: CategoryCreateNestedManyWithoutParentInput
-    company: CompanyCreateNestedOneWithoutCategoriesInput
     costs?: CostCreateNestedManyWithoutCategoryInput
     revenues?: RevenueCreateNestedManyWithoutCategoryInput
   }
@@ -11687,10 +11755,10 @@ export namespace Prisma {
     name: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    users?: UserCreateNestedManyWithoutCompanyInput
     categories?: CategoryCreateNestedManyWithoutCompanyInput
     costs?: CostCreateNestedManyWithoutCompanyInput
     revenues?: RevenueCreateNestedManyWithoutCompanyInput
+    users?: UserCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyUncheckedCreateWithoutTransactionsInput = {
@@ -11698,10 +11766,10 @@ export namespace Prisma {
     name: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    users?: UserUncheckedCreateNestedManyWithoutCompanyInput
     categories?: CategoryUncheckedCreateNestedManyWithoutCompanyInput
     costs?: CostUncheckedCreateNestedManyWithoutCompanyInput
     revenues?: RevenueUncheckedCreateNestedManyWithoutCompanyInput
+    users?: UserUncheckedCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyCreateOrConnectWithoutTransactionsInput = {
@@ -11726,9 +11794,9 @@ export namespace Prisma {
     color?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    company?: CompanyUpdateOneRequiredWithoutCategoriesNestedInput
     parent?: CategoryUpdateOneWithoutSubcategoriesNestedInput
     subcategories?: CategoryUpdateManyWithoutParentNestedInput
-    company?: CompanyUpdateOneRequiredWithoutCategoriesNestedInput
     costs?: CostUpdateManyWithoutCategoryNestedInput
     revenues?: RevenueUpdateManyWithoutCategoryNestedInput
   }
@@ -11762,10 +11830,10 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    users?: UserUpdateManyWithoutCompanyNestedInput
     categories?: CategoryUpdateManyWithoutCompanyNestedInput
     costs?: CostUpdateManyWithoutCompanyNestedInput
     revenues?: RevenueUpdateManyWithoutCompanyNestedInput
+    users?: UserUpdateManyWithoutCompanyNestedInput
   }
 
   export type CompanyUncheckedUpdateWithoutTransactionsInput = {
@@ -11773,10 +11841,10 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    users?: UserUncheckedUpdateManyWithoutCompanyNestedInput
     categories?: CategoryUncheckedUpdateManyWithoutCompanyNestedInput
     costs?: CostUncheckedUpdateManyWithoutCompanyNestedInput
     revenues?: RevenueUncheckedUpdateManyWithoutCompanyNestedInput
+    users?: UserUncheckedUpdateManyWithoutCompanyNestedInput
   }
 
   export type CategoryCreateWithoutCostsInput = {
@@ -11785,11 +11853,11 @@ export namespace Prisma {
     color: string
     createdAt?: Date | string
     updatedAt?: Date | string
+    company: CompanyCreateNestedOneWithoutCategoriesInput
     parent?: CategoryCreateNestedOneWithoutSubcategoriesInput
     subcategories?: CategoryCreateNestedManyWithoutParentInput
-    company: CompanyCreateNestedOneWithoutCategoriesInput
-    transactions?: TransactionCreateNestedManyWithoutCategoryInput
     revenues?: RevenueCreateNestedManyWithoutCategoryInput
+    transactions?: TransactionCreateNestedManyWithoutCategoryInput
   }
 
   export type CategoryUncheckedCreateWithoutCostsInput = {
@@ -11801,8 +11869,8 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     subcategories?: CategoryUncheckedCreateNestedManyWithoutParentInput
-    transactions?: TransactionUncheckedCreateNestedManyWithoutCategoryInput
     revenues?: RevenueUncheckedCreateNestedManyWithoutCategoryInput
+    transactions?: TransactionUncheckedCreateNestedManyWithoutCategoryInput
   }
 
   export type CategoryCreateOrConnectWithoutCostsInput = {
@@ -11815,10 +11883,10 @@ export namespace Prisma {
     name: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    users?: UserCreateNestedManyWithoutCompanyInput
     categories?: CategoryCreateNestedManyWithoutCompanyInput
-    transactions?: TransactionCreateNestedManyWithoutCompanyInput
     revenues?: RevenueCreateNestedManyWithoutCompanyInput
+    transactions?: TransactionCreateNestedManyWithoutCompanyInput
+    users?: UserCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyUncheckedCreateWithoutCostsInput = {
@@ -11826,10 +11894,10 @@ export namespace Prisma {
     name: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    users?: UserUncheckedCreateNestedManyWithoutCompanyInput
     categories?: CategoryUncheckedCreateNestedManyWithoutCompanyInput
-    transactions?: TransactionUncheckedCreateNestedManyWithoutCompanyInput
     revenues?: RevenueUncheckedCreateNestedManyWithoutCompanyInput
+    transactions?: TransactionUncheckedCreateNestedManyWithoutCompanyInput
+    users?: UserUncheckedCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyCreateOrConnectWithoutCostsInput = {
@@ -11854,11 +11922,11 @@ export namespace Prisma {
     color?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    company?: CompanyUpdateOneRequiredWithoutCategoriesNestedInput
     parent?: CategoryUpdateOneWithoutSubcategoriesNestedInput
     subcategories?: CategoryUpdateManyWithoutParentNestedInput
-    company?: CompanyUpdateOneRequiredWithoutCategoriesNestedInput
-    transactions?: TransactionUpdateManyWithoutCategoryNestedInput
     revenues?: RevenueUpdateManyWithoutCategoryNestedInput
+    transactions?: TransactionUpdateManyWithoutCategoryNestedInput
   }
 
   export type CategoryUncheckedUpdateWithoutCostsInput = {
@@ -11870,8 +11938,8 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     subcategories?: CategoryUncheckedUpdateManyWithoutParentNestedInput
-    transactions?: TransactionUncheckedUpdateManyWithoutCategoryNestedInput
     revenues?: RevenueUncheckedUpdateManyWithoutCategoryNestedInput
+    transactions?: TransactionUncheckedUpdateManyWithoutCategoryNestedInput
   }
 
   export type CompanyUpsertWithoutCostsInput = {
@@ -11890,10 +11958,10 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    users?: UserUpdateManyWithoutCompanyNestedInput
     categories?: CategoryUpdateManyWithoutCompanyNestedInput
-    transactions?: TransactionUpdateManyWithoutCompanyNestedInput
     revenues?: RevenueUpdateManyWithoutCompanyNestedInput
+    transactions?: TransactionUpdateManyWithoutCompanyNestedInput
+    users?: UserUpdateManyWithoutCompanyNestedInput
   }
 
   export type CompanyUncheckedUpdateWithoutCostsInput = {
@@ -11901,10 +11969,10 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    users?: UserUncheckedUpdateManyWithoutCompanyNestedInput
     categories?: CategoryUncheckedUpdateManyWithoutCompanyNestedInput
-    transactions?: TransactionUncheckedUpdateManyWithoutCompanyNestedInput
     revenues?: RevenueUncheckedUpdateManyWithoutCompanyNestedInput
+    transactions?: TransactionUncheckedUpdateManyWithoutCompanyNestedInput
+    users?: UserUncheckedUpdateManyWithoutCompanyNestedInput
   }
 
   export type CategoryCreateWithoutRevenuesInput = {
@@ -11913,11 +11981,11 @@ export namespace Prisma {
     color: string
     createdAt?: Date | string
     updatedAt?: Date | string
+    company: CompanyCreateNestedOneWithoutCategoriesInput
     parent?: CategoryCreateNestedOneWithoutSubcategoriesInput
     subcategories?: CategoryCreateNestedManyWithoutParentInput
-    company: CompanyCreateNestedOneWithoutCategoriesInput
-    transactions?: TransactionCreateNestedManyWithoutCategoryInput
     costs?: CostCreateNestedManyWithoutCategoryInput
+    transactions?: TransactionCreateNestedManyWithoutCategoryInput
   }
 
   export type CategoryUncheckedCreateWithoutRevenuesInput = {
@@ -11929,8 +11997,8 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     subcategories?: CategoryUncheckedCreateNestedManyWithoutParentInput
-    transactions?: TransactionUncheckedCreateNestedManyWithoutCategoryInput
     costs?: CostUncheckedCreateNestedManyWithoutCategoryInput
+    transactions?: TransactionUncheckedCreateNestedManyWithoutCategoryInput
   }
 
   export type CategoryCreateOrConnectWithoutRevenuesInput = {
@@ -11943,10 +12011,10 @@ export namespace Prisma {
     name: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    users?: UserCreateNestedManyWithoutCompanyInput
     categories?: CategoryCreateNestedManyWithoutCompanyInput
-    transactions?: TransactionCreateNestedManyWithoutCompanyInput
     costs?: CostCreateNestedManyWithoutCompanyInput
+    transactions?: TransactionCreateNestedManyWithoutCompanyInput
+    users?: UserCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyUncheckedCreateWithoutRevenuesInput = {
@@ -11954,10 +12022,10 @@ export namespace Prisma {
     name: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    users?: UserUncheckedCreateNestedManyWithoutCompanyInput
     categories?: CategoryUncheckedCreateNestedManyWithoutCompanyInput
-    transactions?: TransactionUncheckedCreateNestedManyWithoutCompanyInput
     costs?: CostUncheckedCreateNestedManyWithoutCompanyInput
+    transactions?: TransactionUncheckedCreateNestedManyWithoutCompanyInput
+    users?: UserUncheckedCreateNestedManyWithoutCompanyInput
   }
 
   export type CompanyCreateOrConnectWithoutRevenuesInput = {
@@ -11982,11 +12050,11 @@ export namespace Prisma {
     color?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    company?: CompanyUpdateOneRequiredWithoutCategoriesNestedInput
     parent?: CategoryUpdateOneWithoutSubcategoriesNestedInput
     subcategories?: CategoryUpdateManyWithoutParentNestedInput
-    company?: CompanyUpdateOneRequiredWithoutCategoriesNestedInput
-    transactions?: TransactionUpdateManyWithoutCategoryNestedInput
     costs?: CostUpdateManyWithoutCategoryNestedInput
+    transactions?: TransactionUpdateManyWithoutCategoryNestedInput
   }
 
   export type CategoryUncheckedUpdateWithoutRevenuesInput = {
@@ -11998,8 +12066,8 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     subcategories?: CategoryUncheckedUpdateManyWithoutParentNestedInput
-    transactions?: TransactionUncheckedUpdateManyWithoutCategoryNestedInput
     costs?: CostUncheckedUpdateManyWithoutCategoryNestedInput
+    transactions?: TransactionUncheckedUpdateManyWithoutCategoryNestedInput
   }
 
   export type CompanyUpsertWithoutRevenuesInput = {
@@ -12018,10 +12086,10 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    users?: UserUpdateManyWithoutCompanyNestedInput
     categories?: CategoryUpdateManyWithoutCompanyNestedInput
-    transactions?: TransactionUpdateManyWithoutCompanyNestedInput
     costs?: CostUpdateManyWithoutCompanyNestedInput
+    transactions?: TransactionUpdateManyWithoutCompanyNestedInput
+    users?: UserUpdateManyWithoutCompanyNestedInput
   }
 
   export type CompanyUncheckedUpdateWithoutRevenuesInput = {
@@ -12029,19 +12097,10 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    users?: UserUncheckedUpdateManyWithoutCompanyNestedInput
     categories?: CategoryUncheckedUpdateManyWithoutCompanyNestedInput
-    transactions?: TransactionUncheckedUpdateManyWithoutCompanyNestedInput
     costs?: CostUncheckedUpdateManyWithoutCompanyNestedInput
-  }
-
-  export type UserCreateManyCompanyInput = {
-    id?: string
-    email: string
-    password: string
-    role?: $Enums.UserRole
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    transactions?: TransactionUncheckedUpdateManyWithoutCompanyNestedInput
+    users?: UserUncheckedUpdateManyWithoutCompanyNestedInput
   }
 
   export type CategoryCreateManyCompanyInput = {
@@ -12049,16 +12108,6 @@ export namespace Prisma {
     name: string
     color: string
     parentId?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type TransactionCreateManyCompanyInput = {
-    id?: string
-    label: string
-    amount: number
-    date: Date | string
-    categoryId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -12089,31 +12138,25 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type UserUpdateWithoutCompanyInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  export type TransactionCreateManyCompanyInput = {
+    id?: string
+    label: string
+    description?: string | null
+    amount: number
+    date: Date | string
+    categoryId?: string | null
+    fournisseur?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
-  export type UserUncheckedUpdateWithoutCompanyInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type UserUncheckedUpdateManyWithoutCompanyInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  export type UserCreateManyCompanyInput = {
+    id?: string
+    email: string
+    password: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    role?: $Enums.UserRole
   }
 
   export type CategoryUpdateWithoutCompanyInput = {
@@ -12124,9 +12167,9 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     parent?: CategoryUpdateOneWithoutSubcategoriesNestedInput
     subcategories?: CategoryUpdateManyWithoutParentNestedInput
-    transactions?: TransactionUpdateManyWithoutCategoryNestedInput
     costs?: CostUpdateManyWithoutCategoryNestedInput
     revenues?: RevenueUpdateManyWithoutCategoryNestedInput
+    transactions?: TransactionUpdateManyWithoutCategoryNestedInput
   }
 
   export type CategoryUncheckedUpdateWithoutCompanyInput = {
@@ -12137,9 +12180,9 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     subcategories?: CategoryUncheckedUpdateManyWithoutParentNestedInput
-    transactions?: TransactionUncheckedUpdateManyWithoutCategoryNestedInput
     costs?: CostUncheckedUpdateManyWithoutCategoryNestedInput
     revenues?: RevenueUncheckedUpdateManyWithoutCategoryNestedInput
+    transactions?: TransactionUncheckedUpdateManyWithoutCategoryNestedInput
   }
 
   export type CategoryUncheckedUpdateManyWithoutCompanyInput = {
@@ -12147,36 +12190,6 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     color?: StringFieldUpdateOperationsInput | string
     parentId?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type TransactionUpdateWithoutCompanyInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    label?: StringFieldUpdateOperationsInput | string
-    amount?: FloatFieldUpdateOperationsInput | number
-    date?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    category?: CategoryUpdateOneWithoutTransactionsNestedInput
-  }
-
-  export type TransactionUncheckedUpdateWithoutCompanyInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    label?: StringFieldUpdateOperationsInput | string
-    amount?: FloatFieldUpdateOperationsInput | number
-    date?: DateTimeFieldUpdateOperationsInput | Date | string
-    categoryId?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type TransactionUncheckedUpdateManyWithoutCompanyInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    label?: StringFieldUpdateOperationsInput | string
-    amount?: FloatFieldUpdateOperationsInput | number
-    date?: DateTimeFieldUpdateOperationsInput | Date | string
-    categoryId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -12259,20 +12272,73 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type TransactionUpdateWithoutCompanyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    amount?: FloatFieldUpdateOperationsInput | number
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    fournisseur?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    category?: CategoryUpdateOneWithoutTransactionsNestedInput
+  }
+
+  export type TransactionUncheckedUpdateWithoutCompanyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    amount?: FloatFieldUpdateOperationsInput | number
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    categoryId?: NullableStringFieldUpdateOperationsInput | string | null
+    fournisseur?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TransactionUncheckedUpdateManyWithoutCompanyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    amount?: FloatFieldUpdateOperationsInput | number
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    categoryId?: NullableStringFieldUpdateOperationsInput | string | null
+    fournisseur?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UserUpdateWithoutCompanyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  }
+
+  export type UserUncheckedUpdateWithoutCompanyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  }
+
+  export type UserUncheckedUpdateManyWithoutCompanyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  }
+
   export type CategoryCreateManyParentInput = {
     id?: string
     name: string
     color: string
-    companyId: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type TransactionCreateManyCategoryInput = {
-    id?: string
-    label: string
-    amount: number
-    date: Date | string
     companyId: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -12304,17 +12370,29 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
+  export type TransactionCreateManyCategoryInput = {
+    id?: string
+    label: string
+    description?: string | null
+    amount: number
+    date: Date | string
+    companyId: string
+    fournisseur?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
   export type CategoryUpdateWithoutParentInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     color?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    subcategories?: CategoryUpdateManyWithoutParentNestedInput
     company?: CompanyUpdateOneRequiredWithoutCategoriesNestedInput
-    transactions?: TransactionUpdateManyWithoutCategoryNestedInput
+    subcategories?: CategoryUpdateManyWithoutParentNestedInput
     costs?: CostUpdateManyWithoutCategoryNestedInput
     revenues?: RevenueUpdateManyWithoutCategoryNestedInput
+    transactions?: TransactionUpdateManyWithoutCategoryNestedInput
   }
 
   export type CategoryUncheckedUpdateWithoutParentInput = {
@@ -12325,45 +12403,15 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     subcategories?: CategoryUncheckedUpdateManyWithoutParentNestedInput
-    transactions?: TransactionUncheckedUpdateManyWithoutCategoryNestedInput
     costs?: CostUncheckedUpdateManyWithoutCategoryNestedInput
     revenues?: RevenueUncheckedUpdateManyWithoutCategoryNestedInput
+    transactions?: TransactionUncheckedUpdateManyWithoutCategoryNestedInput
   }
 
   export type CategoryUncheckedUpdateManyWithoutParentInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     color?: StringFieldUpdateOperationsInput | string
-    companyId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type TransactionUpdateWithoutCategoryInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    label?: StringFieldUpdateOperationsInput | string
-    amount?: FloatFieldUpdateOperationsInput | number
-    date?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    company?: CompanyUpdateOneRequiredWithoutTransactionsNestedInput
-  }
-
-  export type TransactionUncheckedUpdateWithoutCategoryInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    label?: StringFieldUpdateOperationsInput | string
-    amount?: FloatFieldUpdateOperationsInput | number
-    date?: DateTimeFieldUpdateOperationsInput | Date | string
-    companyId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type TransactionUncheckedUpdateManyWithoutCategoryInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    label?: StringFieldUpdateOperationsInput | string
-    amount?: FloatFieldUpdateOperationsInput | number
-    date?: DateTimeFieldUpdateOperationsInput | Date | string
     companyId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -12443,6 +12491,42 @@ export namespace Prisma {
     endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     frequency?: NullableEnumFrequencyFieldUpdateOperationsInput | $Enums.Frequency | null
     companyId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TransactionUpdateWithoutCategoryInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    amount?: FloatFieldUpdateOperationsInput | number
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    fournisseur?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    company?: CompanyUpdateOneRequiredWithoutTransactionsNestedInput
+  }
+
+  export type TransactionUncheckedUpdateWithoutCategoryInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    amount?: FloatFieldUpdateOperationsInput | number
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    companyId?: StringFieldUpdateOperationsInput | string
+    fournisseur?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TransactionUncheckedUpdateManyWithoutCategoryInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    amount?: FloatFieldUpdateOperationsInput | number
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    companyId?: StringFieldUpdateOperationsInput | string
+    fournisseur?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }

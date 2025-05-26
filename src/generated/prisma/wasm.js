@@ -131,10 +131,10 @@ exports.Prisma.UserScalarFieldEnum = {
   id: 'id',
   email: 'email',
   password: 'password',
-  role: 'role',
   companyId: 'companyId',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  role: 'role'
 };
 
 exports.Prisma.CategoryScalarFieldEnum = {
@@ -150,10 +150,12 @@ exports.Prisma.CategoryScalarFieldEnum = {
 exports.Prisma.TransactionScalarFieldEnum = {
   id: 'id',
   label: 'label',
+  description: 'description',
   amount: 'amount',
   date: 'date',
   categoryId: 'categoryId',
   companyId: 'companyId',
+  fournisseur: 'fournisseur',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
